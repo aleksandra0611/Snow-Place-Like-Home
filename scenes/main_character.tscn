@@ -1,6 +1,6 @@
 [gd_scene load_steps=63 format=3 uid="uid://cr57a1idl5tt"]
 
-[ext_resource type="Script" path="res://scripts/main_character.gd" id="1_6sd6q"]
+[ext_resource type="Script" uid="uid://b71eug54jv30a" path="res://scripts/main_character.gd" id="1_6sd6q"]
 [ext_resource type="Texture2D" uid="uid://b6p6xf5tyn173" path="res://art/character/Dash.png" id="1_csio0"]
 [ext_resource type="Texture2D" uid="uid://cdej4674u4p4l" path="res://art/character/death.png" id="2_hhjtk"]
 [ext_resource type="Texture2D" uid="uid://cv3nv5y61enoi" path="res://art/character/Idle and running.png" id="3_4eenh"]
@@ -436,3 +436,10 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_odugw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+limit_left = -255
+limit_top = -225
+limit_right = 255
+limit_bottom = 225
