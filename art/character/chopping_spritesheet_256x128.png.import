@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv0bfjedgyum7"
-path="res://.godot/imported/Idle.png-9711aab736c48d33b9264edbc7f8a100.ctex"
+uid="uid://6kwnugapduq0"
+path="res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/wizard/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-9711aab736c48d33b9264edbc7f8a100.ctex"]
+source_file="res://art/character/chopping_spritesheet_256x128.png"
+dest_files=["res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"]
 
 [params]
 

@@ -6,18 +6,40 @@ const SPEED = 100.0
 var player_state
 
 func _physics_process(delta):
+	if player_state == "chop":
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
 	if direction.x == 0 and direction.y == 0:
 		player_state = "idle"
-	elif direction.x != 0 or direction.y != 0:
+	elif direction.x != 0 and direction.y == 0:
 		player_state = "run"
-	
+	if direction.y < 0 and direction.x == 0: 
+		player_state = "run_up"
+	elif direction.y > 0 and direction.x == 0:
+		player_state = "run_down"
 	velocity = direction * SPEED
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("chop"):
+		start_chop()
+	
 	play_anim(direction)
 	
+
+func start_chop():
+	player_state = "chop"
+	$AnimatedSprite2D.play("chop")
+
+	# one-shot connection for when animation ends
+	$AnimatedSprite2D.animation_finished.connect(_on_chop_finished, CONNECT_ONE_SHOT)
+
+
+func _on_chop_finished():
+	player_state = "idle"
 
 func play_anim(dir):
 	if dir.x < 0:
@@ -30,3 +52,9 @@ func play_anim(dir):
 
 	if player_state == "run":
 		$AnimatedSprite2D.play("run")
+		
+	if player_state == "run_up":
+		$AnimatedSprite2D.play("run_up")
+
+	if player_state == "run_down":
+		$AnimatedSprite2D.play("run_down")

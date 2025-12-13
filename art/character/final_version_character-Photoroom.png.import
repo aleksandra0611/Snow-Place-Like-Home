@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv0bfjedgyum7"
-path="res://.godot/imported/Idle.png-9711aab736c48d33b9264edbc7f8a100.ctex"
+uid="uid://6dbn4gps1kic"
+path="res://.godot/imported/final_version_character-Photoroom.png-28612de6d94cd47e6e21b9dfc7d5b888.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/wizard/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-9711aab736c48d33b9264edbc7f8a100.ctex"]
+source_file="res://art/character/final_version_character-Photoroom.png"
+dest_files=["res://.godot/imported/final_version_character-Photoroom.png-28612de6d94cd47e6e21b9dfc7d5b888.ctex"]
 
 [params]
 
