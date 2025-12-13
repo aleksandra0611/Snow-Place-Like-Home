@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dlpw7m12sye26"]
+[gd_scene load_steps=20 format=4 uid="uid://dlpw7m12sye26"]
 
 [ext_resource type="PackedScene" uid="uid://cr57a1idl5tt" path="res://scenes/main_character.tscn" id="1_5y5qu"]
 [ext_resource type="Texture2D" uid="uid://dmvqqshup2nu4" path="res://art/environment/snow2.png" id="2_4wyf3"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://cjh03auvagj6v" path="res://art/environment/details.png" id="5_qfnet"]
 [ext_resource type="PackedScene" uid="uid://dyyt88sslsw6" path="res://scenes/red_tree.tscn" id="7_qxv8b"]
 [ext_resource type="PackedScene" uid="uid://ctusxg0qhgvy7" path="res://scenes/orange_tree.tscn" id="8_m4x5l"]
+[ext_resource type="PackedScene" uid="uid://dv5uboyorjmvd" path="res://scenes/wizard_house.tscn" id="9_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://wxinnefadncb" path="res://scenes/orange_tent.tscn" id="10_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://dxm5aoa4la4vx" path="res://scenes/small_house_2.tscn" id="11_e3hyu"]
+[ext_resource type="PackedScene" uid="uid://4estlmbse0y0" path="res://scenes/small_house.tscn" id="12_q5onr"]
+[ext_resource type="PackedScene" uid="uid://bov3rpnysrm4k" path="res://scenes/white_tent.tscn" id="13_jhx03"]
+[ext_resource type="PackedScene" uid="uid://brmgrsbv5n7sg" path="res://scenes/dog.tscn" id="14_o8fc1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7141"]
 texture = ExtResource("2_71j4m")
@@ -3501,7 +3507,7 @@ sources/2 = SubResource("TileSetAtlasSource_k06ga")
 sources/0 = SubResource("TileSetAtlasSource_i7141")
 sources/3 = SubResource("TileSetAtlasSource_4mrxx")
 
-[node name="world" type="Node2D"]
+[node name="test_world" type="Node2D"]
 y_sort_enabled = true
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_5y5qu")]
@@ -3527,11 +3533,33 @@ tile_set = SubResource("TileSet_w8m12")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
 polygon = PackedVector2Array(-1185, 857, -1192, -951, 2694, -962, 2694, 843, -1183, 862, 1235, 1435, 3228, 838, 3067, -1120, 1509, -1371, -395, -1425, -1535, -958, -1311, 901)
 
-[node name="orange_tree" parent="." instance=ExtResource("8_m4x5l")]
+[node name="trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="orange_tree" parent="trees" instance=ExtResource("8_m4x5l")]
 position = Vector2(-94, -35)
 
-[node name="green_tree" parent="." instance=ExtResource("2_15b68")]
+[node name="green_tree" parent="trees" instance=ExtResource("2_15b68")]
 position = Vector2(152, -20)
 
-[node name="red_tree" parent="." instance=ExtResource("7_qxv8b")]
+[node name="red_tree" parent="trees" instance=ExtResource("7_qxv8b")]
 position = Vector2(-109, 43)
+
+[node name="wizard_house" parent="trees" instance=ExtResource("9_7r4gi")]
+position = Vector2(11, -218)
+
+[node name="orange_tent" parent="trees" instance=ExtResource("10_w7kh3")]
+position = Vector2(-335, -288)
+
+[node name="small_house2" parent="trees" instance=ExtResource("11_e3hyu")]
+position = Vector2(135, 252)
+
+[node name="small_house" parent="trees" instance=ExtResource("12_q5onr")]
+position = Vector2(-324, 134)
+
+[node name="white_tent" parent="trees" instance=ExtResource("13_jhx03")]
+position = Vector2(-564, -225)
+
+[node name="dog" parent="." instance=ExtResource("14_o8fc1")]
+position = Vector2(-17, 32)
+player_path = NodePath("../MainCharacter")

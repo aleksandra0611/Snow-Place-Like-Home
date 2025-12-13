@@ -1,6 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://brmgrsbv5n7sg"]
+[gd_scene load_steps=62 format=3 uid="uid://brmgrsbv5n7sg"]
 
 [ext_resource type="Texture2D" uid="uid://h5hfvpw8lhur" path="res://art/dog/germanShephard.Aesprite-Sheet-x300.png" id="1_gllq5"]
+[ext_resource type="Script" uid="uid://da0uyk0viqev" path="res://scripts/dog.gd" id="1_vwjdu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xggv"]
 atlas = ExtResource("1_gllq5")
@@ -53,6 +54,46 @@ region = Rect2(960, 2880, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5otkb"]
 atlas = ExtResource("1_gllq5")
 region = Rect2(1152, 2880, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwjdu"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(1728, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjqk5"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(1536, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmowd"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(1344, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpbal"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(1152, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaoh4"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(960, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2xh6"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laypt"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei5el"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlmqp"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3i3p"]
+atlas = ExtResource("1_gllq5")
+region = Rect2(0, 384, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xop2b"]
 atlas = ExtResource("1_gllq5")
@@ -247,6 +288,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vwjdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjqk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmowd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpbal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaoh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2xh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laypt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei5el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlmqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3i3p")
+}],
+"loop": false,
+"name": &"get_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xop2b")
 }, {
 "duration": 1.0,
@@ -372,8 +448,15 @@ animations = [{
 }]
 
 [node name="dog" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 4
+script = ExtResource("1_vwjdu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.9073486e-06, 9.536743e-07)
+scale = Vector2(0.23697917, 0.2890625)
 sprite_frames = SubResource("SpriteFrames_kb3mm")
-animation = &"sleep"
-frame_progress = 0.978056
+animation = &"idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-11, -1, -7, -3, 5, -4, 9, -9, 14, -6, 14, -4, 6, 7, -5, 8)

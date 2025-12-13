@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv5uboyorjmvd"]
+
+[ext_resource type="Texture2D" uid="uid://fn0olb0gn7px" path="res://art/environment/big_house.png" id="1_md8os"]
+
+[node name="wizard_house" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -80)
+texture = ExtResource("1_md8os")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+y_sort_enabled = true
+polygon = PackedVector2Array(-130, -92, 135, -95, 136, -11, -156, -16)

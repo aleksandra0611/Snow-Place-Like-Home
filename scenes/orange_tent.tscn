@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://wxinnefadncb"]
+
+[ext_resource type="Texture2D" uid="uid://j0gredufhgrq" path="res://art/environment/orange_tent.png" id="1_vthqr"]
+
+[node name="orange_tent" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(0, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vthqr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-93, -31, 91, -33, 91, 46, -1, 47, -94, 47, -96, 28)

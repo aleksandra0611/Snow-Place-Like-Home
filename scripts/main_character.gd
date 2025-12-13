@@ -5,7 +5,7 @@ const SPEED = 100.0
 
 var player_state
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player_state == "chop":
 		velocity = Vector2.ZERO
 		move_and_slide()

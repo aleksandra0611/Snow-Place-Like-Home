@@ -8,5 +8,4 @@
 texture = ExtResource("1_w1ucn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-y_sort_enabled = true
 polygon = PackedVector2Array(-14, 21, -25, 46, 3, 47, 31, 11, -2, 14, -16, 13)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://4estlmbse0y0"]
+
+[ext_resource type="Texture2D" uid="uid://baevwyn6opqk5" path="res://art/environment/small_house.png" id="1_uq7j4"]
+
+[node name="small_house" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -82)
+texture = ExtResource("1_uq7j4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-93, -70, -68, -91, 91, -89, 93, -11, -95, -6)
