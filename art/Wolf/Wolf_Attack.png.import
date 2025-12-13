@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6kwnugapduq0"
-path="res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"
+uid="uid://dfr46snvqe7q5"
+path="res://.godot/imported/Wolf_Attack.png-da3f6a779591d3d7b82a11a3ffda9695.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/character/chopping_spritesheet_256x128.png"
-dest_files=["res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"]
+source_file="res://art/Wolf/Wolf_Attack.png"
+dest_files=["res://.godot/imported/Wolf_Attack.png-da3f6a779591d3d7b82a11a3ffda9695.ctex"]
 
 [params]
 

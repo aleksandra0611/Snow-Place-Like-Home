@@ -1,6 +1,6 @@
-[gd_scene load_steps=84 format=3 uid="uid://cr57a1idl5tt"]
+[gd_scene load_steps=77 format=3 uid="uid://cr57a1idl5tt"]
 
-[ext_resource type="Script" path="res://scripts/main_character.gd" id="1_6sd6q"]
+[ext_resource type="Script" uid="uid://b71eug54jv30a" path="res://scripts/main_character.gd" id="1_6sd6q"]
 [ext_resource type="Texture2D" uid="uid://b6p6xf5tyn173" path="res://art/character/Dash.png" id="1_csio0"]
 [ext_resource type="Texture2D" uid="uid://6kwnugapduq0" path="res://art/character/chopping_spritesheet_256x128.png" id="2_dasy6"]
 [ext_resource type="Texture2D" uid="uid://cdej4674u4p4l" path="res://art/character/death.png" id="2_hhjtk"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://c7av17b4xaynr" path="res://art/character/Jumping.png" id="4_8mybs"]
 [ext_resource type="Texture2D" uid="uid://uogs8sjo84l3" path="res://art/character/Normal Attack.png" id="5_ssf50"]
 [ext_resource type="Texture2D" uid="uid://cya5mkw3d4pwr" path="res://art/character/running_up_down.png" id="8_k0m8r"]
-[ext_resource type="Texture2D" uid="uid://6dbn4gps1kic" path="res://art/character/final_version_character-Photoroom.png" id="9_alylw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rxx2"]
 atlas = ExtResource("2_dasy6")
@@ -241,30 +240,6 @@ region = Rect2(384, 64, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_el4ws"]
 atlas = ExtResource("3_4eenh")
 region = Rect2(448, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_asvy7"]
-atlas = ExtResource("9_alylw")
-region = Rect2(2, 165, 63, 55)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4s35a"]
-atlas = ExtResource("9_alylw")
-region = Rect2(65, 165, 63, 55)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptdu7"]
-atlas = ExtResource("9_alylw")
-region = Rect2(128, 165, 63, 55)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ed4lp"]
-atlas = ExtResource("9_alylw")
-region = Rect2(191, 165, 63, 55)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvwmw"]
-atlas = ExtResource("9_alylw")
-region = Rect2(254, 165, 63, 55)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w51at"]
-atlas = ExtResource("9_alylw")
-region = Rect2(317, 165, 63, 55)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qpjb7"]
 atlas = ExtResource("8_k0m8r")
@@ -516,29 +491,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_asvy7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4s35a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ptdu7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ed4lp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vvwmw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w51at")
-}],
-"loop": true,
-"name": &"run_down",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_qpjb7")
 }, {
 "duration": 1.0,
@@ -577,8 +529,7 @@ script = ExtResource("1_6sd6q")
 position = Vector2(-1, 5)
 scale = Vector2(0.911765, 0.90625)
 sprite_frames = SubResource("SpriteFrames_5puve")
-animation = &"run_down"
-frame_progress = 0.436568
+animation = &"loopAttack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
@@ -586,7 +537,8 @@ shape = SubResource("RectangleShape2D_odugw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
-limit_left = -255
-limit_top = -225
+limit_enabled = false
+limit_left = -295
+limit_top = -240
 limit_right = 255
 limit_bottom = 225

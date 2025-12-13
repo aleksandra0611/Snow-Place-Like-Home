@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6kwnugapduq0"
-path="res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"
+uid="uid://5qpo27ie5bes"
+path="res://.godot/imported/Bear.png-0053aa10ef00c3df8f57586aeb310bfe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/character/chopping_spritesheet_256x128.png"
-dest_files=["res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"]
+source_file="res://art/bear/Bear.png"
+dest_files=["res://.godot/imported/Bear.png-0053aa10ef00c3df8f57586aeb310bfe.ctex"]
 
 [params]
 

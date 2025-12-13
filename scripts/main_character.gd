@@ -17,10 +17,10 @@ func _physics_process(delta):
 		player_state = "idle"
 	elif direction.x != 0 and direction.y == 0:
 		player_state = "run"
-	if direction.y < 0 and direction.x == 0: 
-		player_state = "run_up"
-	elif direction.y > 0 and direction.x == 0:
-		player_state = "run_down"
+	elif direction.y != 0 and direction.x ==0:
+		player_state = "run"
+	elif direction.y != 0 and direction.x != 0:
+		player_state = "run"
 	velocity = direction * SPEED
 	move_and_slide()
 	
@@ -53,8 +53,4 @@ func play_anim(dir):
 	if player_state == "run":
 		$AnimatedSprite2D.play("run")
 		
-	if player_state == "run_up":
-		$AnimatedSprite2D.play("run_up")
-
-	if player_state == "run_down":
-		$AnimatedSprite2D.play("run_down")
+	

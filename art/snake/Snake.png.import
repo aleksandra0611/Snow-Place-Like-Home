@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6kwnugapduq0"
-path="res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"
+uid="uid://daju7d3w4kfyj"
+path="res://.godot/imported/Snake.png-012e9eda57aaab44ea7d47590c7bbb32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/character/chopping_spritesheet_256x128.png"
-dest_files=["res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"]
+source_file="res://art/snake/Snake.png"
+dest_files=["res://.godot/imported/Snake.png-012e9eda57aaab44ea7d47590c7bbb32.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6kwnugapduq0"
-path="res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"
+uid="uid://cjh03auvagj6v"
+path="res://.godot/imported/details.png-501c686b1683777acaaa36580c0d56a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/character/chopping_spritesheet_256x128.png"
-dest_files=["res://.godot/imported/chopping_spritesheet_256x128.png-c2c69b3f9a9104d5b7dcc70d90dddc04.ctex"]
+source_file="res://art/environment/details.png"
+dest_files=["res://.godot/imported/details.png-501c686b1683777acaaa36580c0d56a4.ctex"]
 
 [params]
 
