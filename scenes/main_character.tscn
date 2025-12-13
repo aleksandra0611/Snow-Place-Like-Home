@@ -1,6 +1,6 @@
 [gd_scene load_steps=77 format=3 uid="uid://cr57a1idl5tt"]
 
-[ext_resource type="Script" uid="uid://b71eug54jv30a" path="res://scripts/main_character.gd" id="1_6sd6q"]
+[ext_resource type="Script" path="res://scripts/main_character.gd" id="1_6sd6q"]
 [ext_resource type="Texture2D" uid="uid://b6p6xf5tyn173" path="res://art/character/Dash.png" id="1_csio0"]
 [ext_resource type="Texture2D" uid="uid://6kwnugapduq0" path="res://art/character/chopping_spritesheet_256x128.png" id="2_dasy6"]
 [ext_resource type="Texture2D" uid="uid://cdej4674u4p4l" path="res://art/character/death.png" id="2_hhjtk"]
@@ -520,25 +520,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odugw"]
-size = Vector2(12, 36)
+size = Vector2(10, 29)
 
 [node name="MainCharacter" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_6sd6q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, 5)
 scale = Vector2(0.911765, 0.90625)
 sprite_frames = SubResource("SpriteFrames_5puve")
-animation = &"loopAttack"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(-1, 9.5)
 shape = SubResource("RectangleShape2D_odugw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
-limit_enabled = false
-limit_left = -295
-limit_top = -240
-limit_right = 255
-limit_bottom = 225
+limit_left = -300
+limit_top = -251
+limit_right = 270
+limit_bottom = 235

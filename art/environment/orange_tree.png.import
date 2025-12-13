@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfr46snvqe7q5"
-path="res://.godot/imported/Wolf_Attack.png-da3f6a779591d3d7b82a11a3ffda9695.ctex"
+uid="uid://l3bnlwj63c0b"
+path="res://.godot/imported/orange_tree.png-804c21871b58fa24c53feb341717744c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Wolf/Wolf_Attack.png"
-dest_files=["res://.godot/imported/Wolf_Attack.png-da3f6a779591d3d7b82a11a3ffda9695.ctex"]
+source_file="res://art/environment/orange_tree.png"
+dest_files=["res://.godot/imported/orange_tree.png-804c21871b58fa24c53feb341717744c.ctex"]
 
 [params]
 
