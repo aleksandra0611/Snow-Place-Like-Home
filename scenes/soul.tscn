@@ -1,22 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://didokb20kgw2y"]
 
 [ext_resource type="Texture2D" uid="uid://h8jpmdn3i56y" path="res://art/soul/soul.png" id="1_ivn1w"]
-[ext_resource type="Script" uid="uid://cttshoil4kr2d" path="res://scripts/soul.gd" id="1_jnmxf"]
+[ext_resource type="Script" path="res://scripts/soul.gd" id="1_jnmxf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnmxf"]
 radius = 6.0
 height = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dt1lx"]
-radius = 12.0
+radius = 35.0143
 
 [node name="soul" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("1_jnmxf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, -1.9374992)
-scale = Vector2(0.16238838, 0.15122767)
+position = Vector2(2, -1.9375)
+scale = Vector2(0.162388, 0.151228)
 texture = ExtResource("1_ivn1w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

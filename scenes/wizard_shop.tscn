@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6kt7eldknfs6"]
+
+[ext_resource type="Texture2D" uid="uid://uyjx3wu6eaiq" path="res://art/environment/shop.png" id="1_8a7ce"]
+[ext_resource type="PackedScene" uid="uid://brgsblmde6x0b" path="res://scenes/wizard.tscn" id="2_tuwjf"]
+[ext_resource type="PackedScene" uid="uid://cr57a1idl5tt" path="res://scenes/main_character.tscn" id="3_l3wh0"]
+
+[sub_resource type="TileSet" id="TileSet_j757y"]
+
+[node name="wizard_shop" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_j757y")
+
+[node name="Shop" type="Sprite2D" parent="."]
+position = Vector2(285.5, 231.25)
+scale = Vector2(0.134588, 0.144857)
+texture = ExtResource("1_8a7ce")
+
+[node name="wizard" parent="." instance=ExtResource("2_tuwjf")]
+position = Vector2(239, 195)
+
+[node name="main_character" parent="." instance=ExtResource("3_l3wh0")]
+position = Vector2(280, 275)
+
+[node name="collisions" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
+polygon = PackedVector2Array(263, 342, 263, 324, 228, 324, 228, 302, 134, 303, 132, 323, 117, 324, 114, 301, 133, 302, 131, 233, 116, 233, 117, 170, 218, 170, 219, 222, 350, 222, 351, 176, 413, 177, 418, 202, 438, 202, 439, 235, 440, 291, 440, 300, 456, 301, 455, 321, 440, 323, 439, 305, 343, 304, 344, 324, 308, 324, 308, 342, 501, 364, 491, 76, 53, 105, 74, 366)

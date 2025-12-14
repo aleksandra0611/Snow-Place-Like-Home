@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://dui4j82feoia1"]
+
+[ext_resource type="Script" path="res://scripts/shop_ui.gd" id="1_blkxk"]
+
+[node name="ShopUI" type="CanvasLayer"]
+script = ExtResource("1_blkxk")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 300.0
+offset_bottom = 200.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Greetings! What triggers your curiosity?"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnBuy" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Buy Potions"
+
+[node name="BtnSell" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Sell Souls"
+
+[node name="BtnLeave" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Leave"
+
+[node name="StatusLabel" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 102.0
+offset_top = 160.0
+offset_right = 202.0
+offset_bottom = 183.0
+
+[connection signal="pressed" from="Panel/VBoxContainer/BtnBuy" to="." method="_on_btn_buy_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/BtnSell" to="." method="_on_btn_sell_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/BtnLeave" to="." method="_on_btn_leave_pressed"]

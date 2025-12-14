@@ -1,6 +1,6 @@
 [gd_scene load_steps=81 format=3 uid="uid://cr57a1idl5tt"]
 
-[ext_resource type="Script" uid="uid://b71eug54jv30a" path="res://scripts/main_character.gd" id="1_6sd6q"]
+[ext_resource type="Script" path="res://scripts/main_character.gd" id="1_6sd6q"]
 [ext_resource type="Texture2D" uid="uid://b6p6xf5tyn173" path="res://art/character/Dash.png" id="1_csio0"]
 [ext_resource type="Texture2D" uid="uid://6kwnugapduq0" path="res://art/character/chopping_spritesheet_256x128.png" id="2_dasy6"]
 [ext_resource type="Texture2D" uid="uid://cdej4674u4p4l" path="res://art/character/death.png" id="2_hhjtk"]
@@ -527,10 +527,10 @@ size = Vector2(19, 33)
 size = Vector2(16, 25)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ltrl"]
-bg_color = Color(0.6900726, 0.9841663, 0.7963677, 1)
+bg_color = Color(0.690073, 0.984166, 0.796368, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvjf6"]
-bg_color = Color(0.04925017, 0.2933303, 0.2631757, 1)
+bg_color = Color(0.0492502, 0.29333, 0.263176, 1)
 
 [node name="main_character" type="CharacterBody2D"]
 y_sort_enabled = true

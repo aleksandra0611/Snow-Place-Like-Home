@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dlpw7m12sye26"]
+[gd_scene load_steps=23 format=4 uid="uid://dlpw7m12sye26"]
 
 [ext_resource type="PackedScene" uid="uid://cr57a1idl5tt" path="res://scenes/main_character.tscn" id="1_5y5qu"]
 [ext_resource type="Texture2D" uid="uid://dmvqqshup2nu4" path="res://art/environment/snow2.png" id="2_4wyf3"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bov3rpnysrm4k" path="res://scenes/white_tent.tscn" id="13_jhx03"]
 [ext_resource type="PackedScene" uid="uid://brmgrsbv5n7sg" path="res://scenes/dog.tscn" id="14_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://c5otwsmiwy7yn" path="res://scenes/wolf.tscn" id="15_xo05s"]
+[ext_resource type="PackedScene" uid="uid://0qqiosaxalv3" path="res://scenes/bear.tscn" id="16_unesf"]
+[ext_resource type="PackedScene" uid="uid://d1g0h41byvrll" path="res://scenes/snake.tscn" id="17_irjq5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7141"]
 texture = ExtResource("2_71j4m")
@@ -3541,10 +3543,10 @@ y_sort_enabled = true
 position = Vector2(-105, -116)
 
 [node name="green_tree" parent="trees" instance=ExtResource("2_15b68")]
-position = Vector2(152, -20)
+position = Vector2(450, 118)
 
 [node name="red_tree" parent="trees" instance=ExtResource("7_qxv8b")]
-position = Vector2(-109, 43)
+position = Vector2(-45, 155)
 
 [node name="wizard_house" parent="trees" instance=ExtResource("9_7r4gi")]
 position = Vector2(11, -218)
@@ -3553,10 +3555,10 @@ position = Vector2(11, -218)
 position = Vector2(-335, -288)
 
 [node name="small_house2" parent="trees" instance=ExtResource("11_e3hyu")]
-position = Vector2(135, 252)
+position = Vector2(194, 328)
 
 [node name="small_house" parent="trees" instance=ExtResource("12_q5onr")]
-position = Vector2(-324, 134)
+position = Vector2(-495, 224)
 
 [node name="white_tent" parent="trees" instance=ExtResource("13_jhx03")]
 position = Vector2(-564, -225)
@@ -3566,4 +3568,10 @@ position = Vector2(-17, 32)
 player_path = NodePath("../main_character")
 
 [node name="Wolf" parent="." instance=ExtResource("15_xo05s")]
-position = Vector2(-134, 154)
+position = Vector2(-255, 273)
+
+[node name="bear" parent="." instance=ExtResource("16_unesf")]
+position = Vector2(722, -213)
+
+[node name="snake" parent="." instance=ExtResource("17_irjq5")]
+position = Vector2(-305, -113)

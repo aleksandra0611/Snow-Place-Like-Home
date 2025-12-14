@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://brgsblmde6x0b"]
+[gd_scene load_steps=14 format=3 uid="uid://brgsblmde6x0b"]
 
 [ext_resource type="Texture2D" uid="uid://bv0bfjedgyum7" path="res://art/wizard/Idle.png" id="1_sfpap"]
+[ext_resource type="Script" path="res://scripts/wizard.gd" id="1_tj1jt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xi6gy"]
 atlas = ExtResource("1_sfpap")
@@ -34,7 +35,7 @@ region = Rect2(1607, 60, 128, 128)
 atlas = ExtResource("1_sfpap")
 region = Rect2(1857, 60, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_o0aqv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kj73h"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -66,19 +67,33 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_etem2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4322y"]
+size = Vector2(21, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwpao"]
 radius = 78.0256
 
-[node name="wizard" type="Node2D"]
+[node name="wizard" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_tj1jt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_o0aqv")
+sprite_frames = SubResource("SpriteFrames_kj73h")
 animation = &"idle"
-frame_progress = 0.117611
+frame_progress = 0.92187
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-48.5, 10)
+shape = SubResource("RectangleShape2D_4322y")
 
 [node name="chat_detection_area" type="Area2D" parent="."]
 position = Vector2(-45, 18)
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
 position = Vector2(-1, -1)
-shape = SubResource("CircleShape2D_etem2")
+shape = SubResource("CircleShape2D_rwpao")
+
+[connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
+[connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]
+[connection signal="tree_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_tree_exited"]

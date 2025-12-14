@@ -71,7 +71,7 @@ func start_attack():
 	# Deal Damage
 	if player and attack_range:
 		print("Bite! Wolf hit the player.")
-		player.take_damage(1)
+		player.take_damage(2)
 	
 	# Cooldown
 	sprite.play("idle")

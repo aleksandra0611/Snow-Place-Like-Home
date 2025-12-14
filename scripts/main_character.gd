@@ -158,3 +158,56 @@ func play_anim(dir):
 
 func add_to_inventory(item_name):
 	inventory_ui.add_item(item_name)
+	
+	# --- SHOP SYSTEM HELPERS ---
+
+func get_item_count(item_name):
+	# Counts how many of a specific item (like "soul") we have in the UI
+	var count = 0
+	var grid = inventory_ui.get_node("Panel/GridContainer")
+	
+	for slot in grid.get_children():
+		# Find the icon in the slot
+		for child in slot.get_children():
+			if child is TextureRect and child.texture.resource_path.ends_with(item_name + ".png"):
+				# Check the AmountLabel if it exists/is visible
+				var label = slot.get_node("AmountLabel")
+				if label.visible:
+					count += int(label.text)
+				else:
+					count += 1
+	return count
+
+func remove_items(item_name, amount_to_remove):
+	# Removes a specific number of items (for paying)
+	var grid = inventory_ui.get_node("Panel/GridContainer")
+	var remaining = amount_to_remove
+	
+	for slot in grid.get_children():
+		if remaining <= 0: break
+		
+		# Find the item
+		var icon = null
+		for child in slot.get_children():
+			if child is TextureRect and child.texture.resource_path.ends_with(item_name + ".png"):
+				icon = child
+				break
+		
+		if icon:
+			var label = slot.get_node("AmountLabel")
+			var current_stack = 1
+			if label.visible:
+				current_stack = int(label.text)
+			
+			# Logic to reduce stack or delete item
+			if current_stack > remaining:
+				# Just reduce the number
+				current_stack -= remaining
+				label.text = str(current_stack)
+				remaining = 0
+			else:
+				# Remove the whole stack and keep going
+				remaining -= current_stack
+				icon.queue_free() # Remove the image
+				label.visible = false # Hide the label
+				label.text = "1" # Reset label

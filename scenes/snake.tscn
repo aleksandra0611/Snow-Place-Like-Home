@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://d1g0h41byvrll"]
+[gd_scene load_steps=39 format=3 uid="uid://d1g0h41byvrll"]
 
+[ext_resource type="Script" path="res://scripts/snake.gd" id="1_oi6nb"]
 [ext_resource type="Texture2D" uid="uid://cqwnqydko4wwu" path="res://art/snake/Snake_Attack.png" id="1_yc36x"]
 [ext_resource type="Texture2D" uid="uid://daju7d3w4kfyj" path="res://art/snake/Snake.png" id="2_auphx"]
 
@@ -67,6 +68,22 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("2_auphx")
 region = Rect2(48, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmh31"]
+atlas = ExtResource("2_auphx")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifked"]
+atlas = ExtResource("2_auphx")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eujor"]
+atlas = ExtResource("2_auphx")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtay0"]
+atlas = ExtResource("2_auphx")
+region = Rect2(48, 96, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4a37"]
 atlas = ExtResource("2_auphx")
 region = Rect2(0, 48, 16, 16)
@@ -114,8 +131,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oj63r")
 }],
-"loop": true,
-"name": &"attack_left",
+"loop": false,
+"name": &"attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -131,7 +148,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_21w4a")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_right",
 "speed": 5.0
 }, {
@@ -149,7 +166,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_xfue1")
 }],
 "loop": true,
-"name": &"idle_left",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -171,6 +188,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wmh31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifked")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eujor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtay0")
+}],
+"loop": false,
+"name": &"killed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b4a37")
 }, {
 "duration": 1.0,
@@ -183,7 +217,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_voxme")
 }],
 "loop": true,
-"name": &"walk_left",
+"name": &"running_left",
 "speed": 5.0
 }, {
 "frames": [{
@@ -200,14 +234,74 @@ animations = [{
 "texture": SubResource("AtlasTexture_quytd")
 }],
 "loop": true,
-"name": &"walk_right",
+"name": &"running_right",
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_muk0e"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghn7p"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_io5qk"]
+radius = 86.0233
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xugjr"]
+radius = 17.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_br7p0"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjpja"]
+bg_color = Color(0.601609, 0.113236, 0.193004, 1)
+
 [node name="snake" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_oi6nb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tnb1o")
-animation = &"attack_right"
-frame = 2
-frame_progress = 0.18421338
+animation = &"killed"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_muk0e")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+visible = false
+shape = SubResource("CircleShape2D_ghn7p")
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_io5qk")
+
+[node name="attack_area" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+visible = false
+shape = SubResource("CircleShape2D_xugjr")
+
+[node name="Health" type="ProgressBar" parent="."]
+offset_left = -4.0
+offset_top = -12.0
+offset_right = 4.0
+offset_bottom = -10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_br7p0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rjpja")
+max_value = 6.0
+step = 1.0
+value = 6.0
+show_percentage = false
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]

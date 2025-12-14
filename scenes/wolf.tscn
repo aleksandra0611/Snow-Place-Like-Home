@@ -1,6 +1,6 @@
 [gd_scene load_steps=47 format=3 uid="uid://c5otwsmiwy7yn"]
 
-[ext_resource type="Script" uid="uid://db1jbpikj0x42" path="res://scripts/wolf.gd" id="1_3a5b2"]
+[ext_resource type="Script" path="res://scripts/wolf.gd" id="1_3a5b2"]
 [ext_resource type="Texture2D" uid="uid://dfr46snvqe7q5" path="res://art/Wolf/Wolf_Attack.png" id="1_x2m1n"]
 [ext_resource type="Texture2D" uid="uid://d3qdyrvmm4tqn" path="res://art/Wolf/Wolf.png" id="1_xwywo"]
 
@@ -311,7 +311,7 @@ size = Vector2(15, 9)
 size = Vector2(20, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aexq3"]
-radius = 59.008472
+radius = 121.066
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3a5b2"]
 radius = 17.0
@@ -320,7 +320,7 @@ radius = 17.0
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aexq3"]
-bg_color = Color(0.60160923, 0.11323585, 0.19300386, 1)
+bg_color = Color(0.601609, 0.113236, 0.193004, 1)
 
 [node name="Wolf" type="CharacterBody2D"]
 collision_mask = 3
@@ -330,7 +330,7 @@ script = ExtResource("1_3a5b2")
 position = Vector2(1, -1)
 scale = Vector2(1.625, 1.6875)
 sprite_frames = SubResource("SpriteFrames_mtw3u")
-animation = &"idle"
+animation = &"killed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1.5)
