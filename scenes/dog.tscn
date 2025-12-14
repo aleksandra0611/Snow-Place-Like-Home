@@ -1,7 +1,7 @@
 [gd_scene load_steps=62 format=3 uid="uid://brmgrsbv5n7sg"]
 
 [ext_resource type="Texture2D" uid="uid://h5hfvpw8lhur" path="res://art/dog/germanShephard.Aesprite-Sheet-x300.png" id="1_gllq5"]
-[ext_resource type="Script" uid="uid://da0uyk0viqev" path="res://scripts/dog.gd" id="1_vwjdu"]
+[ext_resource type="Script" path="res://scripts/dog.gd" id="1_vwjdu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xggv"]
 atlas = ExtResource("1_gllq5")
@@ -319,7 +319,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"get_up",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -406,7 +406,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -453,10 +453,11 @@ collision_layer = 4
 script = ExtResource("1_vwjdu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.9073486e-06, 9.536743e-07)
-scale = Vector2(0.23697917, 0.2890625)
+position = Vector2(-1.90735e-06, 9.53674e-07)
+scale = Vector2(0.236979, 0.289063)
 sprite_frames = SubResource("SpriteFrames_kb3mm")
-animation = &"idle"
+animation = &"sleep"
+frame_progress = 0.284864
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-11, -1, -7, -3, 5, -4, 9, -9, 14, -6, 14, -4, 6, 7, -5, 8)

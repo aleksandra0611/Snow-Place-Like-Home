@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://74d3u82y8uje"]
+
+[ext_resource type="Texture2D" uid="uid://7336k3nxntsr" path="res://art/environment/log.png" id="1_6ebv2"]
+[ext_resource type="Script" path="res://scripts/log.gd" id="1_24th8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lok0"]
+size = Vector2(20, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtymg"]
+radius = 28.0176
+
+[node name="log" type="RigidBody2D"]
+scale = Vector2(1, 1.00692)
+gravity_scale = 0.0
+script = ExtResource("1_24th8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.04)
+texture = ExtResource("1_6ebv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_3lok0")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_mtymg")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="." method="_on_pickup_area_body_exited"]

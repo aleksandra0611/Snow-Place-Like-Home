@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://hk05ngoaq18"]
+[gd_scene load_steps=3 format=3 uid="uid://hk05ngoaq18"]
 
+[ext_resource type="Script" path="res://scripts/green_tree.gd" id="1_31upv"]
 [ext_resource type="Texture2D" uid="uid://ca6djvan3ihib" path="res://art/environment/green_tree.png" id="1_w1ucn"]
 
 [node name="green_tree" type="StaticBody2D"]
+script = ExtResource("1_31upv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_w1ucn")

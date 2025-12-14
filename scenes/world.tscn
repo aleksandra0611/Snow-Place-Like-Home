@@ -3510,7 +3510,7 @@ sources/3 = SubResource("TileSetAtlasSource_4mrxx")
 [node name="test_world" type="Node2D"]
 y_sort_enabled = true
 
-[node name="MainCharacter" parent="." instance=ExtResource("1_5y5qu")]
+[node name="main_character" parent="." instance=ExtResource("1_5y5qu")]
 
 [node name="Layer1" type="TileMapLayer" parent="."]
 z_index = -3
@@ -3537,7 +3537,7 @@ polygon = PackedVector2Array(-1185, 857, -1192, -951, 2694, -962, 2694, 843, -11
 y_sort_enabled = true
 
 [node name="orange_tree" parent="trees" instance=ExtResource("8_m4x5l")]
-position = Vector2(-94, -35)
+position = Vector2(-105, -116)
 
 [node name="green_tree" parent="trees" instance=ExtResource("2_15b68")]
 position = Vector2(152, -20)
@@ -3562,4 +3562,4 @@ position = Vector2(-564, -225)
 
 [node name="dog" parent="." instance=ExtResource("14_o8fc1")]
 position = Vector2(-17, 32)
-player_path = NodePath("../MainCharacter")
+player_path = NodePath("../main_character")

@@ -1,6 +1,6 @@
-[gd_scene load_steps=77 format=3 uid="uid://cr57a1idl5tt"]
+[gd_scene load_steps=79 format=3 uid="uid://cr57a1idl5tt"]
 
-[ext_resource type="Script" uid="uid://b71eug54jv30a" path="res://scripts/main_character.gd" id="1_6sd6q"]
+[ext_resource type="Script" path="res://scripts/main_character.gd" id="1_6sd6q"]
 [ext_resource type="Texture2D" uid="uid://b6p6xf5tyn173" path="res://art/character/Dash.png" id="1_csio0"]
 [ext_resource type="Texture2D" uid="uid://6kwnugapduq0" path="res://art/character/chopping_spritesheet_256x128.png" id="2_dasy6"]
 [ext_resource type="Texture2D" uid="uid://cdej4674u4p4l" path="res://art/character/death.png" id="2_hhjtk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c7av17b4xaynr" path="res://art/character/Jumping.png" id="4_8mybs"]
 [ext_resource type="Texture2D" uid="uid://uogs8sjo84l3" path="res://art/character/Normal Attack.png" id="5_ssf50"]
 [ext_resource type="Texture2D" uid="uid://cya5mkw3d4pwr" path="res://art/character/running_up_down.png" id="8_k0m8r"]
+[ext_resource type="PackedScene" uid="uid://dkqtvqe8acpj6" path="res://scenes/inventory_ui.tscn" id="9_ft0j2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rxx2"]
 atlas = ExtResource("2_dasy6")
@@ -290,7 +291,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"chop",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -522,8 +523,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odugw"]
 size = Vector2(10, 29)
 
-[node name="MainCharacter" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ha0ti"]
+size = Vector2(16, 25)
+
+[node name="main_character" type="CharacterBody2D"]
 y_sort_enabled = true
+position = Vector2(0, -7)
 collision_layer = 2
 script = ExtResource("1_6sd6q")
 
@@ -531,7 +536,9 @@ script = ExtResource("1_6sd6q")
 position = Vector2(-1, 5)
 scale = Vector2(0.911765, 0.90625)
 sprite_frames = SubResource("SpriteFrames_5puve")
-animation = &"idle"
+animation = &"chop"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 9.5)
@@ -539,8 +546,20 @@ shape = SubResource("RectangleShape2D_odugw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
-limit_enabled = false
-limit_left = -300
-limit_top = -251
-limit_right = 270
-limit_bottom = 235
+limit_left = -2000
+limit_top = -2000
+limit_right = 2000
+limit_bottom = 2000
+
+[node name="AxeHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AxeHitbox"]
+position = Vector2(15, 8)
+shape = SubResource("RectangleShape2D_ha0ti")
+
+[node name="InventoryUI" parent="." instance=ExtResource("9_ft0j2")]
+visible = false
+offset_left = -60.0
+offset_top = -109.0
+offset_right = -20.0
+offset_bottom = -69.0

@@ -1,0 +1,346 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkqtvqe8acpj6"]
+
+[ext_resource type="Script" path="res://scripts/inventory_ui.gd" id="1_xfpoa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_364od"]
+bg_color = Color(0.300273, 0.256002, 0.120315, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.813258, 0.813258, 0.813257, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v05xf"]
+bg_color = Color(0.305882, 0.568627, 0.368627, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_3unbe"]
+font_size = 8
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xfpoa")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_364od")
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -41.5
+offset_right = 56.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="Panel" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel2" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel2"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel3" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel3"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel4" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel4"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel5" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel5"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel6" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel6"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel7" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel7"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel8" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel8"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel9" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel9"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel10" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel10"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel11" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel11"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Panel12" type="Panel" parent="Panel/GridContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v05xf")
+
+[node name="AmountLabel" type="Label" parent="Panel/GridContainer/Panel12"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_3unbe")
+horizontal_alignment = 2
+vertical_alignment = 2

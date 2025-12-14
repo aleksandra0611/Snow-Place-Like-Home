@@ -1,14 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctusxg0qhgvy7"]
+[gd_scene load_steps=3 format=3 uid="uid://ctusxg0qhgvy7"]
 
 [ext_resource type="Texture2D" uid="uid://l3bnlwj63c0b" path="res://art/environment/orange_tree.png" id="1_4t5cp"]
+[ext_resource type="Script" path="res://scripts/orange_tree.gd" id="1_b83gg"]
 
 [node name="orange_tree" type="StaticBody2D"]
 y_sort_enabled = true
+script = ExtResource("1_b83gg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.5, -64.5)
 texture = ExtResource("1_4t5cp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(2.5, -64.5)
-polygon = PackedVector2Array(-16.5, 42.5, -39, 41, -17, 27, -11, 12, 1, 7, 16.5, 20.5, 26.5, 43.5)
+position = Vector2(-2, 4)
+polygon = PackedVector2Array(-16.5, 42.5, -25.5, 47.5, -17, 27, -11, 12, 1, 7, 16.5, 20.5, 26.5, 43.5)
