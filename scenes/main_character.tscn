@@ -1,6 +1,6 @@
-[gd_scene load_steps=79 format=3 uid="uid://cr57a1idl5tt"]
+[gd_scene load_steps=81 format=3 uid="uid://cr57a1idl5tt"]
 
-[ext_resource type="Script" path="res://scripts/main_character.gd" id="1_6sd6q"]
+[ext_resource type="Script" uid="uid://b71eug54jv30a" path="res://scripts/main_character.gd" id="1_6sd6q"]
 [ext_resource type="Texture2D" uid="uid://b6p6xf5tyn173" path="res://art/character/Dash.png" id="1_csio0"]
 [ext_resource type="Texture2D" uid="uid://6kwnugapduq0" path="res://art/character/chopping_spritesheet_256x128.png" id="2_dasy6"]
 [ext_resource type="Texture2D" uid="uid://cdej4674u4p4l" path="res://art/character/death.png" id="2_hhjtk"]
@@ -421,7 +421,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"loopAttack",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -459,7 +459,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"normalAttack",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -521,10 +521,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_odugw"]
-size = Vector2(10, 29)
+size = Vector2(19, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ha0ti"]
 size = Vector2(16, 25)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ltrl"]
+bg_color = Color(0.6900726, 0.9841663, 0.7963677, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvjf6"]
+bg_color = Color(0.04925017, 0.2933303, 0.2631757, 1)
 
 [node name="main_character" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -536,12 +542,10 @@ script = ExtResource("1_6sd6q")
 position = Vector2(-1, 5)
 scale = Vector2(0.911765, 0.90625)
 sprite_frames = SubResource("SpriteFrames_5puve")
-animation = &"chop"
-frame = 3
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 9.5)
+position = Vector2(0.5, 7.5)
 shape = SubResource("RectangleShape2D_odugw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -563,3 +567,15 @@ offset_left = -60.0
 offset_top = -109.0
 offset_right = -20.0
 offset_bottom = -69.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -17.0
+offset_top = -20.0
+offset_right = 18.0
+offset_bottom = -17.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0ltrl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kvjf6")
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false

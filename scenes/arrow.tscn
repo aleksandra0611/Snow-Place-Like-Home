@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c57dtc7uuj44a"]
+
+[ext_resource type="Script" uid="uid://c7erp6mtr64a0" path="res://scripts/arrow.gd" id="1_23jat"]
+[ext_resource type="Texture2D" uid="uid://m80giwqonlk2" path="res://art/Arrow/arrow.png" id="2_q8ifc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ckq1"]
+size = Vector2(18, 0.75)
+
+[node name="Arrow" type="Area2D"]
+script = ExtResource("1_23jat")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -2)
+scale = Vector2(0.10993303, 0.05189734)
+texture = ExtResource("2_q8ifc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.375)
+shape = SubResource("RectangleShape2D_7ckq1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

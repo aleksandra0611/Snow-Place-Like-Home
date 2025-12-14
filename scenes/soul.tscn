@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://didokb20kgw2y"]
+
+[ext_resource type="Texture2D" uid="uid://h8jpmdn3i56y" path="res://art/soul/soul.png" id="1_ivn1w"]
+[ext_resource type="Script" uid="uid://cttshoil4kr2d" path="res://scripts/soul.gd" id="1_jnmxf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnmxf"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dt1lx"]
+radius = 12.0
+
+[node name="soul" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_jnmxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -1.9374992)
+scale = Vector2(0.16238838, 0.15122767)
+texture = ExtResource("1_ivn1w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_jnmxf")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_dt1lx")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="." method="_on_pickup_area_body_exited"]

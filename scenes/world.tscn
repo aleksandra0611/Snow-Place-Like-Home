@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dlpw7m12sye26"]
+[gd_scene load_steps=21 format=4 uid="uid://dlpw7m12sye26"]
 
 [ext_resource type="PackedScene" uid="uid://cr57a1idl5tt" path="res://scenes/main_character.tscn" id="1_5y5qu"]
 [ext_resource type="Texture2D" uid="uid://dmvqqshup2nu4" path="res://art/environment/snow2.png" id="2_4wyf3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://4estlmbse0y0" path="res://scenes/small_house.tscn" id="12_q5onr"]
 [ext_resource type="PackedScene" uid="uid://bov3rpnysrm4k" path="res://scenes/white_tent.tscn" id="13_jhx03"]
 [ext_resource type="PackedScene" uid="uid://brmgrsbv5n7sg" path="res://scenes/dog.tscn" id="14_o8fc1"]
+[ext_resource type="PackedScene" uid="uid://c5otwsmiwy7yn" path="res://scenes/wolf.tscn" id="15_xo05s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7141"]
 texture = ExtResource("2_71j4m")
@@ -3563,3 +3564,6 @@ position = Vector2(-564, -225)
 [node name="dog" parent="." instance=ExtResource("14_o8fc1")]
 position = Vector2(-17, 32)
 player_path = NodePath("../main_character")
+
+[node name="Wolf" parent="." instance=ExtResource("15_xo05s")]
+position = Vector2(-134, 154)

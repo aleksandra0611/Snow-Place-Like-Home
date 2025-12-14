@@ -5,61 +5,66 @@ extends Control
 func add_item(item_name):
 	var item_added = false
 
-	# Check if we already have a stack of this item
+	# STEP 1: CHECK FOR EXISTING STACKS
 	for slot in grid.get_children():
-		# Check if slot is NOT empty
-		if slot.get_child_count() > 0:
-			# Get the icon node (it's the first child usually, but let's be safe)
-			# We'll assume the texture rect is always the first child if it exists,
-			# but we have a label there now too!
+		var icon = null
+		
+		# Find the existing icon
+		for child in slot.get_children():
+			if child is TextureRect:
+				icon = child
+				break
+		
+		# If found and matches
+		if icon and icon.texture.resource_path.ends_with(item_name + ".png"):
+			var label = slot.get_node("AmountLabel")
+			var current_amount = 1
+			if label.visible:
+				current_amount = int(label.text)
 			
-			# Let's find the TextureRect specifically
-			var icon = null
-			for child in slot.get_children():
-				if child is TextureRect:
-					icon = child
-					break
-			
-			# If we found an icon, check if it matches our new item
-			if icon and icon.texture.resource_path.ends_with(item_name + ".png"):
-				# Found a match! Now check the count.
-				var label = slot.get_node("AmountLabel")
-				var current_amount = 1
+			if current_amount < 12:
+				current_amount += 1
+				label.text = str(current_amount)
+				label.visible = true 
+				print("Added " + item_name + " to stack! Total: " + str(current_amount))
 				
-				if label.visible:
-					current_amount = int(label.text)
+				# Optional: Update tooltip to show count? 
+				# icon.tooltip_text = item_name + " x" + str(current_amount)
 				
-				# If stack is not full (less than 12)
-				if current_amount < 12:
-					current_amount += 1
-					label.text = str(current_amount)
-					label.visible = true # Show the number now
-					print("Added to stack! Total: " + str(current_amount))
-					item_added = true
-					return 
+				item_added = true
+				return 
 
-	# If we didn't add it to a stack, find an empty slot
+	# STEP 2: FIND AN EMPTY SLOT
 	if not item_added:
 		for slot in grid.get_children():
-			# An empty slot ONLY has the hidden AmountLabel, so child count is 1.
-			# If you deleted the labels, count is 0. 
-			# Safest check: look for a TextureRect.
+			# Check if slot has an icon
 			var has_item = false
 			for child in slot.get_children():
 				if child is TextureRect:
 					has_item = true
+					break
 			
 			if not has_item:
-				# FOUND EMPTY SLOT
+				# FOUND EMPTY SLOT!
 				var icon = TextureRect.new()
+				
+				# --- 1. SETUP IMAGE ---
 				if item_name == "log":
 					icon.texture = preload("res://art/environment/log.png")
+				elif item_name == "soul":
+					icon.texture = preload("res://art/soul/soul.png")
 				
-				# Setup Icon visuals
+				# --- 2. CENTER THE ICON ---
+				# This tells the icon to stick to the center of the slot Panel
+				icon.set_anchors_preset(Control.PRESET_FULL_RECT)
 				icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 				icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-				icon.custom_minimum_size = Vector2(25, 25)
+				
+				# --- 3. ADD HOVER TEXT (TOOLTIP) ---
+				# Godot will automatically show this text when hovering
+				icon.tooltip_text = item_name.capitalize() # e.g., turns "log" into "Log"
 				
 				slot.add_child(icon)
-				print("Created new stack.")
-				return 
+				slot.move_child(icon, 0)
+				print("Created new " + item_name + " stack.")
+				return

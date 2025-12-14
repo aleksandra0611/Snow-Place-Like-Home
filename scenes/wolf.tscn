@@ -1,5 +1,6 @@
-[gd_scene load_steps=40 format=3 uid="uid://c5otwsmiwy7yn"]
+[gd_scene load_steps=47 format=3 uid="uid://c5otwsmiwy7yn"]
 
+[ext_resource type="Script" uid="uid://db1jbpikj0x42" path="res://scripts/wolf.gd" id="1_3a5b2"]
 [ext_resource type="Texture2D" uid="uid://dfr46snvqe7q5" path="res://art/Wolf/Wolf_Attack.png" id="1_x2m1n"]
 [ext_resource type="Texture2D" uid="uid://d3qdyrvmm4tqn" path="res://art/Wolf/Wolf.png" id="1_xwywo"]
 
@@ -162,8 +163,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qsl6e")
 }],
-"loop": true,
-"name": &"attack_left",
+"loop": false,
+"name": &"attack",
 "speed": 6.0
 }, {
 "frames": [{
@@ -179,7 +180,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7gnuf")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_right",
 "speed": 6.0
 }, {
@@ -213,8 +214,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_boyuf")
 }],
-"loop": true,
-"name": &"killed_left",
+"loop": false,
+"name": &"killed",
 "speed": 5.0
 }, {
 "frames": [{
@@ -303,9 +304,70 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrowp"]
+size = Vector2(15, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a5b2"]
+size = Vector2(20, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aexq3"]
+radius = 59.008472
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3a5b2"]
+radius = 17.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3a5b2"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aexq3"]
+bg_color = Color(0.60160923, 0.11323585, 0.19300386, 1)
+
 [node name="Wolf" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_3a5b2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(1.625, 1.6875)
 sprite_frames = SubResource("SpriteFrames_mtw3u")
-animation = &"attack_right"
-frame_progress = 0.46043786
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_jrowp")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_3a5b2")
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_aexq3")
+
+[node name="attack_area" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+shape = SubResource("CircleShape2D_3a5b2")
+
+[node name="Health" type="ProgressBar" parent="."]
+offset_left = -5.0
+offset_top = -11.0
+offset_right = 5.0
+offset_bottom = -9.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3a5b2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_aexq3")
+max_value = 3.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]

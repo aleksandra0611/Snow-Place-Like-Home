@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5qpo27ie5bes"
-path="res://.godot/imported/Bear.png-0053aa10ef00c3df8f57586aeb310bfe.ctex"
+uid="uid://m80giwqonlk2"
+path="res://.godot/imported/arrow.png-e6b17b70629b6434be94e2ea198ce9a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/bear/Bear.png"
-dest_files=["res://.godot/imported/Bear.png-0053aa10ef00c3df8f57586aeb310bfe.ctex"]
+source_file="res://art/Arrow/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-e6b17b70629b6434be94e2ea198ce9a9.ctex"]
 
 [params]
 
