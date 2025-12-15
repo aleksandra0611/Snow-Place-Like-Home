@@ -2,7 +2,7 @@ extends Node2D
 
 # Path back to your main world
 # UPDATE THIS if your world scene is named differently!
-var world_scene = "res://scenes/world.tscn"
+var world_scene = "res://scenes/world_wizard.tscn"
 
 @onready var exit_ui = $ExitUI
 @onready var btn_yes = $ExitUI/Panel/BtnYes

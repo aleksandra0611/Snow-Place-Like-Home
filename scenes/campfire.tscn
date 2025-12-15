@@ -1,6 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4m5ui12ov58e"]
+[gd_scene load_steps=15 format=3 uid="uid://d4m5ui12ov58e"]
 
+[ext_resource type="Script" path="res://scripts/campfire.gd" id="1_0je48"]
 [ext_resource type="Texture2D" uid="uid://cq2gi3yvidkbp" path="res://art/fire/campfire-Sheet.png" id="1_t5nnx"]
+[ext_resource type="PackedScene" uid="uid://b4kei8a2fpgyj" path="res://scenes/fire_out.tscn" id="2_1t4us"]
+[ext_resource type="AudioStream" uid="uid://lidktv1qic8p" path="res://sounds/whoosh-flame.mp3" id="4_p7vcq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kn7x"]
 atlas = ExtResource("1_t5nnx")
@@ -52,9 +55,47 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ajip"]
+size = Vector2(81, 28.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4k0yi"]
+radius = 49.366
+
+[sub_resource type="LabelSettings" id="LabelSettings_b6gwm"]
+font_color = Color(1, 0, 0, 1)
+
 [node name="Campfire" type="StaticBody2D"]
+script = ExtResource("1_0je48")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 2.745)
 sprite_frames = SubResource("SpriteFrames_f18er")
 animation = &"burning"
+
+[node name="DeadFireVisuals" parent="." instance=ExtResource("2_1t4us")]
+position = Vector2(1, 30)
+scale = Vector2(0.6, 0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 31)
+shape = SubResource("RectangleShape2D_8ajip")
+
+[node name="InteractArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0, 20)
+shape = SubResource("CircleShape2D_4k0yi")
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = -26.0
+offset_top = -79.0
+offset_right = 26.0
+offset_bottom = -56.0
+label_settings = SubResource("LabelSettings_b6gwm")
+
+[node name="AddFuelSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p7vcq")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_area_2d_body_exited"]

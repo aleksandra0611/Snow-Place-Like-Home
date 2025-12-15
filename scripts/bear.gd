@@ -106,18 +106,25 @@ func die():
 	velocity = Vector2.ZERO
 	health_bar.visible = false
 	
-	# Stop sound immediately on death
-	if growl_sfx.playing:
-		growl_sfx.stop()
+	# Stop sound if playing
+	if has_node("GrowlSFX") and $GrowlSFX.playing:
+		$GrowlSFX.stop()
+	if has_node("HissSFX") and $HissSFX.playing:
+		$HissSFX.stop()
 	
 	sprite.play("killed")
 	
 	await sprite.animation_finished 
-	
 	await get_tree().create_timer(1.0).timeout
 	
 	var soul = soul_scene.instantiate()
+	
+	# --- THE FIX ---
+	# This ensures the soul spawns exactly where the enemy is,
+	# ignoring the parent's position or offsets.
+	soul.top_level = true 
 	soul.global_position = global_position
+	
 	get_parent().call_deferred("add_child", soul)
 	
 	queue_free()

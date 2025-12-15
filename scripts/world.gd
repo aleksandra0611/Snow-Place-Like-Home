@@ -9,7 +9,7 @@ var night_end_time = 300.0 # Loops back to 0
 func _ready():
 	day_anim.play("cycle")
 	day_anim.seek(Global.current_day_time)
-	day_anim.speed_scale = 10.0
+	#day_anim.speed_scale = 10.0
 	
 	# RESTORE STATE:
 	# If we load back in and it was already night, ensure variables match

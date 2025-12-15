@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4kei8a2fpgyj"]
+[gd_scene load_steps=3 format=3 uid="uid://b4kei8a2fpgyj"]
 
 [ext_resource type="Texture2D" uid="uid://bmgxng3i2ywe3" path="res://art/fire/out.png" id="1_ba3aw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4abi"]
+radius = 62.0725
 
 [node name="Fire_out" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ba3aw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 4)
+shape = SubResource("CircleShape2D_n4abi")

@@ -7,7 +7,8 @@ var current_logs = 0
 var respawn_time_duration = 60.0 # 1 minute in seconds
 
 @onready var sprite = $Sprite2D
-@onready var collision = $CollisionPolygon2D # Or CollisionShape2D, check your node name!
+# Ensure this matches your actual node name in the scene (might be CollisionShape2D)
+@onready var collision = $CollisionPolygon2D 
 
 func _ready():
 	# Check if this specific tree (by Name) has a saved respawn time
@@ -47,7 +48,17 @@ func chop_hit():
 
 func spawn_log():
 	var new_log = log_scene.instantiate()
-	new_log.global_position = global_position + Vector2(0, 40)
+	
+	# --- FIX 1: Prevent Logs from flying away ---
+	# This tells the log to ignore parent transforms and exist in global space
+	new_log.top_level = true 
+	
+	# --- FIX 2: Randomize position slightly ---
+	# Spawns near the tree base with a little variety
+	var random_offset = Vector2(randf_range(-30, 30), randf_range(20, 50))
+	new_log.global_position = global_position + random_offset
+	
+	# Add to the World (the tree's parent)
 	get_parent().add_child(new_log)
 
 func kill_tree():

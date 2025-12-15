@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c57dtc7uuj44a"]
 
-[ext_resource type="Script" uid="uid://c7erp6mtr64a0" path="res://scripts/arrow.gd" id="1_23jat"]
+[ext_resource type="Script" path="res://scripts/arrow.gd" id="1_23jat"]
 [ext_resource type="Texture2D" uid="uid://m80giwqonlk2" path="res://art/Arrow/arrow.png" id="2_q8ifc"]
 [ext_resource type="AudioStream" uid="uid://m0d5mcxu187w" path="res://sounds/arrow_impact_sound.mp3" id="3_q8ifc"]
 
@@ -12,7 +12,7 @@ script = ExtResource("1_23jat")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -2)
-scale = Vector2(0.10993303, 0.05189734)
+scale = Vector2(0.109933, 0.0518973)
 texture = ExtResource("2_q8ifc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

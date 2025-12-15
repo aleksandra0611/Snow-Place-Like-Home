@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c6kt7eldknfs6"]
 
 [ext_resource type="Texture2D" uid="uid://uyjx3wu6eaiq" path="res://art/environment/shop.png" id="1_8a7ce"]
-[ext_resource type="Script" uid="uid://dpfqyqrpelre0" path="res://scripts/wizard_shop.gd" id="1_cfyyf"]
+[ext_resource type="Script" path="res://scripts/wizard_shop.gd" id="1_cfyyf"]
 [ext_resource type="PackedScene" uid="uid://brgsblmde6x0b" path="res://scenes/wizard.tscn" id="2_tuwjf"]
 [ext_resource type="PackedScene" uid="uid://cr57a1idl5tt" path="res://scenes/main_character.tscn" id="3_l3wh0"]
 [ext_resource type="AudioStream" uid="uid://di0m5ls7y7yur" path="res://sounds/wizards_shop.mp3" id="5_a8ev5"]

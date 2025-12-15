@@ -1,7 +1,7 @@
 [gd_scene load_steps=52 format=3 uid="uid://0qqiosaxalv3"]
 
 [ext_resource type="Texture2D" uid="uid://bqkk0nw0w40an" path="res://art/bear/Bear_Attack.png" id="1_aquv5"]
-[ext_resource type="Script" uid="uid://bpw1rqema1tmh" path="res://scripts/bear.gd" id="1_dbn4x"]
+[ext_resource type="Script" path="res://scripts/bear.gd" id="1_dbn4x"]
 [ext_resource type="Texture2D" uid="uid://5qpo27ie5bes" path="res://art/bear/Bear.png" id="2_v0uag"]
 [ext_resource type="AudioStream" uid="uid://bysq6kwmx76wt" path="res://sounds/bear.mp3" id="4_a5djg"]
 
@@ -367,7 +367,6 @@ sprite_frames = SubResource("SpriteFrames_2tg87")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_5nlb0")
 
@@ -378,19 +377,15 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_cd52g")
 
 [node name="detection_area" type="Area2D" parent="."]
-visible = false
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
-visible = false
 shape = SubResource("CircleShape2D_d70qw")
 
 [node name="attack_area" type="Area2D" parent="."]
-visible = false
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
-visible = false
 shape = SubResource("CircleShape2D_cghnv")
 
 [node name="Health" type="ProgressBar" parent="."]

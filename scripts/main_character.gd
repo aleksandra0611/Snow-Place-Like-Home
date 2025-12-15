@@ -160,11 +160,20 @@ func handle_shooting():
 	
 	if not Input.is_action_pressed("shoot"):
 		player_state = "idle"
+
 func fire_arrow(dir):
 	var arrow = arrow_scene.instantiate()
-	arrow.global_position = global_position 
+	
+	# 1. MAGIC FIX: Tell the arrow to ignore parent movement/offsets
+	# This makes the arrow exist in "World Space" automatically.
+	arrow.top_level = true 
+	
+	# 2. Set position matches player exactly
+	arrow.global_position = global_position
 	arrow.direction = dir
 	arrow.rotation = dir.angle()
+	
+	# 3. Add to scene
 	get_parent().add_child(arrow)
 
 # --- OTHERS ---

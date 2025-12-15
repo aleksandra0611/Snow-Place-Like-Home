@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcb2prj465wlq"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_651h0"]
+[ext_resource type="Texture2D" uid="uid://bdyooaqg70e0k" path="res://art/Screenshot 2025-12-15 204951.png" id="2_n1uoq"]
+
+[sub_resource type="SystemFont" id="SystemFont_5dijl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vsplj"]
+font = SubResource("SystemFont_5dijl")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_651h0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -321.0
+offset_right = 586.0
+offset_bottom = 347.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_n1uoq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = -85.5
+offset_right = 291.0
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Snow Place Like Home"
+label_settings = SubResource("LabelSettings_vsplj")
+
+[node name="BtnPlay" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="BtnQuit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "QUIT"

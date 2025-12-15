@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=4 uid="uid://dlpw7m12sye26"]
+[gd_scene load_steps=29 format=4 uid="uid://dlpw7m12sye26"]
 
 [ext_resource type="PackedScene" uid="uid://cr57a1idl5tt" path="res://scenes/main_character.tscn" id="1_5y5qu"]
-[ext_resource type="Script" uid="uid://byrrqv5ghtknw" path="res://scripts/world.gd" id="1_m4pfa"]
-[ext_resource type="Texture2D" uid="uid://dmvqqshup2nu4" path="res://art/environment/snow2.png" id="2_4wyf3"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_m4pfa"]
+[ext_resource type="Texture2D" uid="uid://dmvqqshup2nu4" path="res://art/snow2.png" id="2_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://hk05ngoaq18" path="res://scenes/green_tree.tscn" id="2_15b68"]
 [ext_resource type="Texture2D" uid="uid://ba8uwixpxx8w5" path="res://art/environment/WINTER VILLAGE ASSET.png" id="2_71j4m"]
 [ext_resource type="Texture2D" uid="uid://cuibbmjpveyag" path="res://art/environment/rocks.png" id="3_k0juu"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://c5otwsmiwy7yn" path="res://scenes/wolf.tscn" id="15_xo05s"]
 [ext_resource type="PackedScene" uid="uid://0qqiosaxalv3" path="res://scenes/bear.tscn" id="16_unesf"]
 [ext_resource type="PackedScene" uid="uid://d1g0h41byvrll" path="res://scenes/snake.tscn" id="17_irjq5"]
+[ext_resource type="PackedScene" uid="uid://d4m5ui12ov58e" path="res://scenes/campfire.tscn" id="19_4qfrk"]
+[ext_resource type="PackedScene" uid="uid://cambklpogpvbx" path="res://scenes/npc.tscn" id="20_bgd2c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7141"]
 texture = ExtResource("2_71j4m")
@@ -3546,8 +3548,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uie3d"]
 _data = {
-&"RESET": SubResource("Animation_l8i51"),
-&"cycle": SubResource("Animation_wep26")
+"RESET": SubResource("Animation_l8i51"),
+"cycle": SubResource("Animation_wep26")
 }
 
 [node name="test_world" type="Node2D"]
@@ -3621,6 +3623,12 @@ position = Vector2(-305, -113)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_uie3d")
+"": SubResource("AnimationLibrary_uie3d")
 }
 autoplay = "cycle"
+
+[node name="Campfire" parent="." instance=ExtResource("19_4qfrk")]
+position = Vector2(163, -29)
+
+[node name="NPC" parent="." instance=ExtResource("20_bgd2c")]
+position = Vector2(68, -68)
