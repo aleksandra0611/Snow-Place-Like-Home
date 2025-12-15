@@ -1,6 +1,6 @@
-[gd_scene load_steps=83 format=3 uid="uid://cr57a1idl5tt"]
+[gd_scene load_steps=86 format=3 uid="uid://cr57a1idl5tt"]
 
-[ext_resource type="Script" path="res://scripts/main_character.gd" id="1_6sd6q"]
+[ext_resource type="Script" uid="uid://b71eug54jv30a" path="res://scripts/main_character.gd" id="1_6sd6q"]
 [ext_resource type="Texture2D" uid="uid://b6p6xf5tyn173" path="res://art/character/Dash.png" id="1_csio0"]
 [ext_resource type="Texture2D" uid="uid://6kwnugapduq0" path="res://art/character/chopping_spritesheet_256x128.png" id="2_dasy6"]
 [ext_resource type="Texture2D" uid="uid://cdej4674u4p4l" path="res://art/character/death.png" id="2_hhjtk"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cya5mkw3d4pwr" path="res://art/character/running_up_down.png" id="8_k0m8r"]
 [ext_resource type="PackedScene" uid="uid://dkqtvqe8acpj6" path="res://scenes/inventory_ui.tscn" id="9_ft0j2"]
 [ext_resource type="Texture2D" uid="uid://m80giwqonlk2" path="res://art/Arrow/arrow.png" id="10_kvjf6"]
+[ext_resource type="AudioStream" uid="uid://bqdrm2g68uvxv" path="res://sounds/footsteps.wav" id="11_hj3w6"]
+[ext_resource type="AudioStream" uid="uid://t25cjwhnjpv1" path="res://sounds/arrow_sound.mp3" id="12_hodpe"]
+[ext_resource type="AudioStream" uid="uid://cyy8or4tfhkb0" path="res://sounds/equip.mp3" id="13_qoi8n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rxx2"]
 atlas = ExtResource("2_dasy6")
@@ -489,7 +492,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 8.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -547,7 +550,8 @@ script = ExtResource("1_6sd6q")
 position = Vector2(-1, 5)
 scale = Vector2(0.911765, 0.90625)
 sprite_frames = SubResource("SpriteFrames_5puve")
-animation = &"idle"
+animation = &"run"
+frame_progress = 0.4015037
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 7.5)
@@ -599,3 +603,13 @@ position = Vector2(-7, -22)
 rotation = -0.570723
 scale = Vector2(0.0240456, 0.0264446)
 texture = ExtResource("10_kvjf6")
+
+[node name="FootstepSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_hj3w6")
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_hodpe")
+
+[node name="PickupSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_qoi8n")
+volume_db = 20.0

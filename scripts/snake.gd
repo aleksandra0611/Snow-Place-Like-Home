@@ -17,12 +17,11 @@ var player: CharacterBody2D = null
 # NODES
 @onready var sprite = $AnimatedSprite2D
 @onready var health_bar = $Health
+@onready var hiss_sfx = $HissSFX # <--- Ensure this node exists in Snake Scene!
 
 func _ready():
 	health_bar.max_value = hp
 	health_bar.value = hp
-	# Optional: Hide the bar if health is full, show it only when hit?
-	# For now, we leave it visible.
 
 func _physics_process(_delta):
 	if dead:
@@ -97,6 +96,10 @@ func die():
 	velocity = Vector2.ZERO
 	health_bar.visible = false
 	
+	# Stop sound immediately on death
+	if hiss_sfx.playing:
+		hiss_sfx.stop()
+	
 	sprite.play("killed")
 	
 	await sprite.animation_finished 
@@ -114,11 +117,18 @@ func _on_detection_area_body_entered(body):
 	if body is Player:
 		player_in_area = true
 		player = body
+		
+		# Play Loop Sound
+		if not dead and not hiss_sfx.playing:
+			hiss_sfx.play()
 
 func _on_detection_area_body_exited(body):
 	if body is Player:
 		player_in_area = false
 		player = null
+		
+		# Stop Sound
+		hiss_sfx.stop()
 
 func _on_attack_area_body_entered(body):
 	if body is Player:

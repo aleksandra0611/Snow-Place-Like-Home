@@ -22,5 +22,5 @@ func collect_log():
 	print("Log collected!")
 	
 	nearby_player.add_to_inventory("log")
-	
+	nearby_player.play_pickup_sound()
 	queue_free()

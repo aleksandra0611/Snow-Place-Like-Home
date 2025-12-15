@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dui4j82feoia1"]
+[gd_scene load_steps=6 format=3 uid="uid://dui4j82feoia1"]
 
-[ext_resource type="Script" path="res://scripts/shop_ui.gd" id="1_blkxk"]
+[ext_resource type="Script" uid="uid://daqa77ksiu5ig" path="res://scripts/shop_ui.gd" id="1_blkxk"]
 [ext_resource type="Texture2D" uid="uid://7336k3nxntsr" path="res://art/environment/log.png" id="2_18xnp"]
 [ext_resource type="Texture2D" uid="uid://h8jpmdn3i56y" path="res://art/soul/soul.png" id="2_oixfk"]
+[ext_resource type="AudioStream" uid="uid://bpwhh2ckmfgtb" path="res://sounds/bought_sold.mp3" id="4_crtus"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmp6b"]
 bg_color = Color(0, 0, 0, 1)
@@ -149,6 +150,9 @@ size_flags_horizontal = 4
 text = "Purchase
 "
 icon_alignment = 1
+
+[node name="PurchaseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_crtus")
 
 [connection signal="pressed" from="Panel/MainMenu/BtnBuy" to="." method="_on_btn_buy_pressed"]
 [connection signal="pressed" from="Panel/MainMenu/BtnWood" to="." method="_on_btn_wood_pressed"]

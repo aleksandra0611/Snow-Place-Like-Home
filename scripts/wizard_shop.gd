@@ -7,10 +7,8 @@ var world_scene = "res://scenes/world.tscn"
 @onready var exit_ui = $ExitUI
 @onready var btn_yes = $ExitUI/Panel/BtnYes
 @onready var btn_no = $ExitUI/Panel/BtnNo
-
 func _ready():
 	exit_ui.visible = false
-	
 	# Connect buttons
 	btn_yes.pressed.connect(_on_yes_pressed)
 	btn_no.pressed.connect(_on_no_pressed)

@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://d4m5ui12ov58e"]
+[gd_scene load_steps=9 format=3 uid="uid://d4m5ui12ov58e"]
 
 [ext_resource type="Texture2D" uid="uid://cq2gi3yvidkbp" path="res://art/fire/campfire-Sheet.png" id="1_t5nnx"]
-[ext_resource type="Texture2D" uid="uid://baqxf0rpia8y7" path="res://art/fire/go_out.png" id="2_eo7at"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kn7x"]
 atlas = ExtResource("1_t5nnx")
@@ -27,10 +26,6 @@ region = Rect2(144, 0, 36, 48)
 atlas = ExtResource("1_t5nnx")
 region = Rect2(180, 0, 36, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ehtd"]
-atlas = ExtResource("2_eo7at")
-region = Rect2(0, 0, 169, 184)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_f18er"]
 animations = [{
 "frames": [{
@@ -55,14 +50,6 @@ animations = [{
 "loop": true,
 "name": &"burning",
 "speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7ehtd")
-}],
-"loop": false,
-"name": &"extinguish",
-"speed": 2.0
 }]
 
 [node name="Campfire" type="StaticBody2D"]
@@ -70,5 +57,4 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 2.745)
 sprite_frames = SubResource("SpriteFrames_f18er")
-animation = &"extinguish"
-frame_progress = 1.0
+animation = &"burning"

@@ -3,6 +3,7 @@ extends CharacterBody2D
 # --- STATS ---
 @export var normal_speed = 65.0
 @export var night_speed = 85.0
+@onready var growl_sfx = $GrowlSFX
 var current_speed = normal_speed
 var dead = false
 var hp = 3 
@@ -106,21 +107,18 @@ func die():
 	velocity = Vector2.ZERO
 	health_bar.visible = false
 	
-	# 1. Play animation
+	# 2. SILENCE THE WOLF ON DEATH
+	if growl_sfx.playing:
+		growl_sfx.stop()
+	
 	sprite.play("killed")
-	
-	# 2. Wait for animation to finish
-	await sprite.animation_finished 
-	
-	# 3. Wait 1 extra second (as you requested)
+	await sprite.animation_finished
 	await get_tree().create_timer(1.0).timeout
 	
-	# 4. Spawn the Soul
 	var soul = soul_scene.instantiate()
 	soul.global_position = global_position
 	get_parent().call_deferred("add_child", soul)
 	
-	# 5. Delete Wolf
 	queue_free()
 
 # --- SIGNALS ---
@@ -128,11 +126,18 @@ func _on_detection_area_body_entered(body):
 	if body is Player:
 		player_in_area = true
 		player = body
+		
+		# 3. PLAY SOUND (Only if not already playing)
+		if not dead and not growl_sfx.playing:
+			growl_sfx.play()
 
 func _on_detection_area_body_exited(body):
 	if body is Player:
 		player_in_area = false
 		player = null
+		
+		# 4. STOP SOUND
+		growl_sfx.stop()
 
 func _on_attack_area_body_entered(body):
 	if body is Player:

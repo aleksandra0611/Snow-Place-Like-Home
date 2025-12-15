@@ -17,6 +17,9 @@ var shop_items = [
 @onready var wizard_text = $Panel/MainMenu/Label
 @onready var btn_back = $Panel/BtnBack
 
+# NEW: Audio Node
+@onready var purchase_sfx = $PurchaseSFX 
+
 # WOOD NODES
 @onready var spin_box = $Panel/WoodMenu/HBoxContainer/SpinBox
 @onready var cost_label = $Panel/WoodMenu/HBoxContainer/CostLabel
@@ -27,15 +30,12 @@ func _ready():
 func set_player_reference(p):
 	player = p
 
-# --- NAVIGATION ---
-
+# --- NAVIGATION (Unchanged) ---
 func show_main_menu():
 	main_menu.visible = true
 	buy_menu.visible = false
 	wood_menu.visible = false
 	btn_back.visible = false
-	
-	# FIX: Make sure the main label is visible here
 	wizard_text.visible = true
 	wizard_text.text = "Greetings! How can I help?"
 
@@ -44,8 +44,6 @@ func show_buy_menu():
 	buy_menu.visible = true
 	wood_menu.visible = false
 	btn_back.visible = true
-	
-	# FIX: Keep main label visible here too
 	wizard_text.visible = true
 	wizard_text.text = "Pick a potion..."
 	_refresh_potion_list()
@@ -55,13 +53,7 @@ func show_wood_menu():
 	buy_menu.visible = false
 	wood_menu.visible = true
 	btn_back.visible = true
-	
-	# --- THE FIX ---
-	# We HIDE the main greeting label so it doesn't overlap 
-	# with the label inside your WoodMenu scene.
 	wizard_text.visible = false 
-	
-	# Reset values
 	spin_box.value = 4 
 	_update_wood_cost(4)
 
@@ -79,12 +71,18 @@ func _refresh_potion_list():
 
 func _on_item_bought(item_data):
 	var cost = item_data["price"]
+	
+	# CHECK IF SUCCESSFUL
 	if player.get_item_count("soul") >= cost:
 		player.remove_items("soul", cost)
 		player.add_to_inventory(item_data["id"]) 
 		wizard_text.text = "Purchased " + item_data["name"] + "!"
+		
+		# PLAY SOUND HERE
+		purchase_sfx.play() 
 	else:
 		wizard_text.text = "Not enough souls!"
+		# No sound here, so it stays silent on failure
 
 # --- WOOD LOGIC ---
 
@@ -92,7 +90,6 @@ func _on_spin_box_value_changed(value):
 	_update_wood_cost(value)
 
 func _update_wood_cost(quantity):
-	# Formula: 4 logs cost 1 soul
 	var total_cost = quantity / 4 
 	cost_label.text = str(total_cost)
 
@@ -100,21 +97,23 @@ func _on_btn_confirm_wood_pressed():
 	var quantity = int(spin_box.value)
 	var total_cost = quantity / 4
 	
+	# CHECK IF SUCCESSFUL
 	if player.get_item_count("soul") >= total_cost:
 		player.remove_items("soul", total_cost)
 		for i in range(quantity):
 			player.add_to_inventory("log")
 			
-		# FIX: We must turn the label ON again to show this success message
 		wizard_text.visible = true
 		wizard_text.text = "Here is your wood."
+		
+		# PLAY SOUND HERE
+		purchase_sfx.play()
 	else:
-		# FIX: Show error message
 		wizard_text.visible = true
 		wizard_text.text = "You need " + str(total_cost) + " souls for that."
+		# No sound here
 
-# --- MAIN BUTTON SIGNALS ---
-
+# --- MAIN BUTTON SIGNALS (Unchanged) ---
 func _on_btn_buy_pressed():
 	show_buy_menu()
 

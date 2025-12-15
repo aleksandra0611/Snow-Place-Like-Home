@@ -19,6 +19,7 @@ var player: CharacterBody2D = null
 # NODES
 @onready var sprite = $AnimatedSprite2D
 @onready var health_bar = $Health
+@onready var growl_sfx = $GrowlSFX # <--- Ensure this node exists in Bear Scene!
 
 func _ready():
 	health_bar.max_value = hp
@@ -105,6 +106,10 @@ func die():
 	velocity = Vector2.ZERO
 	health_bar.visible = false
 	
+	# Stop sound immediately on death
+	if growl_sfx.playing:
+		growl_sfx.stop()
+	
 	sprite.play("killed")
 	
 	await sprite.animation_finished 
@@ -122,11 +127,18 @@ func _on_detection_area_body_entered(body):
 	if body is Player:
 		player_in_area = true
 		player = body
+		
+		# Play Loop Sound
+		if not dead and not growl_sfx.playing:
+			growl_sfx.play()
 
 func _on_detection_area_body_exited(body):
 	if body is Player:
 		player_in_area = false
 		player = null
+		
+		# Stop Sound
+		growl_sfx.stop()
 
 func _on_attack_area_body_entered(body):
 	if body is Player:

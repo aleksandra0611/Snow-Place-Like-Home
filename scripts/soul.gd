@@ -24,6 +24,6 @@ func collect_soul():
 	# Send "soul" to the player's inventory logic
 	# Ensure your player script has 'add_to_inventory' function
 	nearby_player.add_to_inventory("soul")
-	
+	nearby_player.play_pickup_sound()
 	# Remove the soul object from the world
 	queue_free()

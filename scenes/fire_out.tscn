@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4kei8a2fpgyj"]
+
+[ext_resource type="Texture2D" uid="uid://bmgxng3i2ywe3" path="res://art/fire/out.png" id="1_ba3aw"]
+
+[node name="Fire_out" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ba3aw")

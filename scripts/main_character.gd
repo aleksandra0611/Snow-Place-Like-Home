@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
-
+@onready var footstep_sfx = $FootstepSFX
+@onready var shoot_sfx = $ShootSFX
+@onready var pickup_sfx = $PickupSFX
 const SPEED = 100.0
 
 # --- HEALTH VARIABLES ---
@@ -45,11 +47,16 @@ func _physics_process(_delta):
 		return
 	
 	var direction = Input.get_vector("left", "right", "up", "down")
+	
 	if player_state != "attack":
 		if direction == Vector2.ZERO:
 			player_state = "idle"
+			footstep_sfx.stop()
 		else:
 			player_state = "run"
+			
+			if velocity.length() > 0 and not footstep_sfx.playing:
+				footstep_sfx.play()
 	
 	velocity = direction * SPEED
 	move_and_slide()
@@ -116,10 +123,14 @@ func handle_shooting():
 	can_shoot = false 
 	var mouse_pos = get_global_mouse_position()
 	var aim_direction = (mouse_pos - global_position).normalized()
+	
+	# Visuals (Flipping sprite)
 	if mouse_pos.x < global_position.x:
 		$AnimatedSprite2D.flip_h = true
 	else:
 		$AnimatedSprite2D.flip_h = false
+
+	# Animation Logic
 	if velocity != Vector2.ZERO:
 		$AnimatedSprite2D.play("run")
 		is_holding_shoot = true 
@@ -129,18 +140,26 @@ func handle_shooting():
 			is_holding_shoot = true
 		elif is_holding_shoot:
 			$AnimatedSprite2D.play("loopAttack")
-			
+	
+	# --- SOUND FIX HERE ---
+	# We play the sound OUTSIDE the if/else blocks above.
+	# If we are in this function, we are about to shoot, so play the sound!
+	if shoot_sfx:
+		shoot_sfx.pitch_scale = randf_range(0.9, 1.1) # Optional variety
+		shoot_sfx.play()
+
+	# Fire the actual arrow
 	fire_arrow(aim_direction)
 	
-	# SUBTRACT ARROW
+	# Subtract ammo
 	Global.player_arrows -= 1
-	update_arrow_label() # Update the UI
+	update_arrow_label() 
 	
 	await get_tree().create_timer(0.8).timeout
 	can_shoot = true
+	
 	if not Input.is_action_pressed("shoot"):
 		player_state = "idle"
-
 func fire_arrow(dir):
 	var arrow = arrow_scene.instantiate()
 	arrow.global_position = global_position 
@@ -215,3 +234,12 @@ func remove_items(item_name, amount_to_remove):
 				icon.queue_free() 
 				label.visible = false 
 				label.text = "1"
+
+func play_pickup_sound():
+	# We don't need arguments anymore!
+	
+	# Randomize pitch slightly so it doesn't sound robotic
+	pickup_sfx.pitch_scale = randf_range(0.9, 1.1)
+	
+	# Play the sound you dragged into the inspector
+	pickup_sfx.play()

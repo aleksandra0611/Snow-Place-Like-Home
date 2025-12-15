@@ -1,8 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://c5otwsmiwy7yn"]
+[gd_scene load_steps=48 format=3 uid="uid://c5otwsmiwy7yn"]
 
-[ext_resource type="Script" path="res://scripts/wolf.gd" id="1_3a5b2"]
+[ext_resource type="Script" uid="uid://db1jbpikj0x42" path="res://scripts/wolf.gd" id="1_3a5b2"]
 [ext_resource type="Texture2D" uid="uid://dfr46snvqe7q5" path="res://art/Wolf/Wolf_Attack.png" id="1_x2m1n"]
 [ext_resource type="Texture2D" uid="uid://d3qdyrvmm4tqn" path="res://art/Wolf/Wolf.png" id="1_xwywo"]
+[ext_resource type="AudioStream" uid="uid://bopt36yg5auny" path="res://sounds/wolf.mp3" id="4_aexq3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtw3u"]
 atlas = ExtResource("1_x2m1n")
@@ -366,6 +367,10 @@ max_value = 3.0
 step = 1.0
 value = 3.0
 show_percentage = false
+
+[node name="GrowlSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_aexq3")
+attenuation = 0.9659363
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

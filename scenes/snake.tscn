@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://d1g0h41byvrll"]
+[gd_scene load_steps=40 format=3 uid="uid://d1g0h41byvrll"]
 
-[ext_resource type="Script" path="res://scripts/snake.gd" id="1_oi6nb"]
+[ext_resource type="Script" uid="uid://ci11tdgsr00h4" path="res://scripts/snake.gd" id="1_oi6nb"]
 [ext_resource type="Texture2D" uid="uid://cqwnqydko4wwu" path="res://art/snake/Snake_Attack.png" id="1_yc36x"]
 [ext_resource type="Texture2D" uid="uid://daju7d3w4kfyj" path="res://art/snake/Snake.png" id="2_auphx"]
+[ext_resource type="AudioStream" uid="uid://dxl4iut4h0mod" path="res://sounds/snake.mp3" id="4_l4b1q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4b1q"]
 atlas = ExtResource("1_yc36x")
@@ -300,6 +301,10 @@ max_value = 6.0
 step = 1.0
 value = 6.0
 show_percentage = false
+
+[node name="HissSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_l4b1q")
+volume_db = 10.0
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
