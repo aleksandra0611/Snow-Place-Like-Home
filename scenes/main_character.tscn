@@ -1,6 +1,6 @@
-[gd_scene load_steps=81 format=3 uid="uid://cr57a1idl5tt"]
+[gd_scene load_steps=83 format=3 uid="uid://cr57a1idl5tt"]
 
-[ext_resource type="Script" path="res://scripts/main_character.gd" id="1_6sd6q"]
+[ext_resource type="Script" uid="uid://b71eug54jv30a" path="res://scripts/main_character.gd" id="1_6sd6q"]
 [ext_resource type="Texture2D" uid="uid://b6p6xf5tyn173" path="res://art/character/Dash.png" id="1_csio0"]
 [ext_resource type="Texture2D" uid="uid://6kwnugapduq0" path="res://art/character/chopping_spritesheet_256x128.png" id="2_dasy6"]
 [ext_resource type="Texture2D" uid="uid://cdej4674u4p4l" path="res://art/character/death.png" id="2_hhjtk"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://uogs8sjo84l3" path="res://art/character/Normal Attack.png" id="5_ssf50"]
 [ext_resource type="Texture2D" uid="uid://cya5mkw3d4pwr" path="res://art/character/running_up_down.png" id="8_k0m8r"]
 [ext_resource type="PackedScene" uid="uid://dkqtvqe8acpj6" path="res://scenes/inventory_ui.tscn" id="9_ft0j2"]
+[ext_resource type="Texture2D" uid="uid://m80giwqonlk2" path="res://art/Arrow/arrow.png" id="10_kvjf6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rxx2"]
 atlas = ExtResource("2_dasy6")
@@ -524,13 +525,17 @@ animations = [{
 size = Vector2(19, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ha0ti"]
-size = Vector2(16, 25)
+size = Vector2(41, 48)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ltrl"]
 bg_color = Color(0.690073, 0.984166, 0.796368, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvjf6"]
 bg_color = Color(0.0492502, 0.29333, 0.263176, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ltrl"]
+font_size = 43
+font_color = Color(0.8901961, 0.7254902, 0, 1)
 
 [node name="main_character" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -558,7 +563,7 @@ limit_bottom = 2000
 [node name="AxeHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AxeHitbox"]
-position = Vector2(15, 8)
+position = Vector2(0.5, 8)
 shape = SubResource("RectangleShape2D_ha0ti")
 
 [node name="InventoryUI" parent="." instance=ExtResource("9_ft0j2")]
@@ -570,12 +575,27 @@ offset_bottom = -69.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -17.0
-offset_top = -20.0
+offset_top = -16.0
 offset_right = 18.0
-offset_bottom = -17.0
+offset_bottom = -13.0
 theme_override_styles/background = SubResource("StyleBoxFlat_0ltrl")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kvjf6")
 max_value = 10.0
 step = 1.0
 value = 10.0
 show_percentage = false
+
+[node name="ArrowLabel" type="Label" parent="."]
+offset_left = -4.0
+offset_top = -25.0
+offset_right = 92.0
+offset_bottom = 39.0
+scale = Vector2(0.125, 0.125)
+text = "20"
+label_settings = SubResource("LabelSettings_0ltrl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.0000005, -22)
+rotation = -0.57072264
+scale = Vector2(0.024045601, 0.02644461)
+texture = ExtResource("10_kvjf6")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=62 format=3 uid="uid://brmgrsbv5n7sg"]
+[gd_scene load_steps=63 format=3 uid="uid://brmgrsbv5n7sg"]
 
 [ext_resource type="Texture2D" uid="uid://h5hfvpw8lhur" path="res://art/dog/germanShephard.Aesprite-Sheet-x300.png" id="1_gllq5"]
-[ext_resource type="Script" path="res://scripts/dog.gd" id="1_vwjdu"]
+[ext_resource type="Script" uid="uid://da0uyk0viqev" path="res://scripts/dog.gd" id="1_vwjdu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xggv"]
 atlas = ExtResource("1_gllq5")
@@ -447,6 +447,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vwjdu"]
+radius = 156.0032
+
 [node name="dog" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 4
@@ -456,8 +459,16 @@ script = ExtResource("1_vwjdu")
 position = Vector2(-1.90735e-06, 9.53674e-07)
 scale = Vector2(0.236979, 0.289063)
 sprite_frames = SubResource("SpriteFrames_kb3mm")
-animation = &"sleep"
-frame_progress = 0.284864
+animation = &"attack"
+frame = 4
+frame_progress = 0.45515588
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-11, -1, -7, -3, 5, -4, 9, -9, 14, -6, 14, -4, 6, 7, -5, 8)
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+shape = SubResource("CircleShape2D_vwjdu")
+
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://74d3u82y8uje"]
 
 [ext_resource type="Texture2D" uid="uid://7336k3nxntsr" path="res://art/environment/log.png" id="1_6ebv2"]
-[ext_resource type="Script" path="res://scripts/log.gd" id="1_24th8"]
+[ext_resource type="Script" uid="uid://dh16sw3effw6h" path="res://scripts/log.gd" id="1_24th8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lok0"]
 size = Vector2(20, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mtymg"]
-radius = 28.0176
+radius = 59.0
 
 [node name="log" type="RigidBody2D"]
 scale = Vector2(1, 1.00692)

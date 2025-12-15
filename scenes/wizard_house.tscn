@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv5uboyorjmvd"]
+[gd_scene load_steps=5 format=3 uid="uid://dv5uboyorjmvd"]
 
 [ext_resource type="Texture2D" uid="uid://fn0olb0gn7px" path="res://art/environment/big_house.png" id="1_md8os"]
+[ext_resource type="Script" uid="uid://2oljoc45tqej" path="res://scripts/wizard_house.gd" id="1_rwyn5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md8os"]
+radius = 58.00862
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wj4ca"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="wizard_house" type="StaticBody2D"]
 y_sort_enabled = true
+script = ExtResource("1_rwyn5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -80)
@@ -12,3 +20,56 @@ texture = ExtResource("1_md8os")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 y_sort_enabled = true
 polygon = PackedVector2Array(-130, -92, 135, -95, 136, -11, -156, -16)
+
+[node name="DoorArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea"]
+position = Vector2(0, -39)
+shape = SubResource("CircleShape2D_md8os")
+
+[node name="DoorUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="DoorUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -55.0
+offset_right = 113.5
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wj4ca")
+
+[node name="Label" type="Label" parent="DoorUI/Panel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 2.0
+offset_right = 186.0
+offset_bottom = 28.0
+text = "Enter wizard's shop?"
+
+[node name="BtnYes" type="Button" parent="DoorUI/Panel"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 46.0
+offset_right = 77.0
+offset_bottom = 77.0
+text = "YES"
+
+[node name="BtnNo" type="Button" parent="DoorUI/Panel"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 48.0
+offset_right = 173.0
+offset_bottom = 79.0
+text = "NO"
+
+[connection signal="body_entered" from="DoorArea" to="." method="_on_door_area_body_entered"]
+[connection signal="body_exited" from="DoorArea" to="." method="_on_door_area_body_exited"]
+[connection signal="pressed" from="DoorUI/Panel/BtnYes" to="." method="_on_btn_yes_pressed"]
+[connection signal="pressed" from="DoorUI/Panel/BtnNo" to="." method="_on_btn_no_pressed"]

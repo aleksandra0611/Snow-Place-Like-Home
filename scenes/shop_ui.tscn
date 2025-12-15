@@ -1,13 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dui4j82feoia1"]
+[gd_scene load_steps=4 format=3 uid="uid://dui4j82feoia1"]
 
-[ext_resource type="Script" path="res://scripts/shop_ui.gd" id="1_blkxk"]
+[ext_resource type="Script" uid="uid://daqa77ksiu5ig" path="res://scripts/shop_ui.gd" id="1_blkxk"]
+[ext_resource type="Texture2D" uid="uid://7336k3nxntsr" path="res://art/environment/log.png" id="2_18xnp"]
+[ext_resource type="Texture2D" uid="uid://h8jpmdn3i56y" path="res://art/soul/soul.png" id="2_oixfk"]
 
 [node name="ShopUI" type="CanvasLayer"]
 script = ExtResource("1_blkxk")
 
 [node name="Panel" type="Panel" parent="."]
-offset_right = 300.0
-offset_bottom = 200.0
+offset_left = 831.0
+offset_top = 426.0
+offset_right = 1185.0
+offset_bottom = 665.0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
@@ -17,7 +21,7 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "Greetings! What triggers your curiosity?"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="MainMenu" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,25 +35,102 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BtnBuy" type="Button" parent="Panel/VBoxContainer"]
+[node name="BtnBuy" type="Button" parent="Panel/MainMenu"]
 layout_mode = 2
 text = "Buy Potions"
 
-[node name="BtnSell" type="Button" parent="Panel/VBoxContainer"]
+[node name="BtnWood" type="Button" parent="Panel/MainMenu"]
 layout_mode = 2
-text = "Sell Souls"
+text = "Buy Wood"
 
-[node name="BtnLeave" type="Button" parent="Panel/VBoxContainer"]
+[node name="BtnLeave" type="Button" parent="Panel/MainMenu"]
 layout_mode = 2
 text = "Leave"
 
 [node name="StatusLabel" type="Label" parent="Panel"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 102.0
 offset_top = 160.0
 offset_right = 202.0
 offset_bottom = 183.0
 
-[connection signal="pressed" from="Panel/VBoxContainer/BtnBuy" to="." method="_on_btn_buy_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/BtnSell" to="." method="_on_btn_sell_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/BtnLeave" to="." method="_on_btn_leave_pressed"]
+[node name="BuyMenu" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 39.0
+offset_right = 300.0
+offset_bottom = 202.0
+
+[node name="BtnBack" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 199.0
+offset_right = 78.0
+offset_bottom = 230.0
+text = "Return"
+
+[node name="WoodMenu" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(90, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.021000002
+anchor_bottom = 0.021000002
+offset_left = -4.0
+offset_top = -0.01900053
+offset_right = 350.0
+offset_bottom = 191.981
+
+[node name="Label" type="Label" parent="Panel/WoodMenu"]
+layout_mode = 2
+text = "   How many logs do you need?
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/WoodMenu"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/WoodMenu/HBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+texture = ExtResource("2_18xnp")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Panel/WoodMenu/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="SpinBox" type="SpinBox" parent="Panel/WoodMenu/HBoxContainer"]
+layout_mode = 2
+min_value = 4.0
+max_value = 80.0
+step = 4.0
+value = 4.0
+
+[node name="Label2" type="Label" parent="Panel/WoodMenu/HBoxContainer"]
+layout_mode = 2
+text = "="
+
+[node name="CostLabel" type="Label" parent="Panel/WoodMenu/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/WoodMenu/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_oixfk")
+expand_mode = 2
+
+[node name="BtnConfirmWood" type="Button" parent="Panel/WoodMenu"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Purchase
+"
+icon_alignment = 1
+
+[connection signal="pressed" from="Panel/MainMenu/BtnBuy" to="." method="_on_btn_buy_pressed"]
+[connection signal="pressed" from="Panel/MainMenu/BtnWood" to="." method="_on_btn_wood_pressed"]
+[connection signal="pressed" from="Panel/MainMenu/BtnLeave" to="." method="_on_btn_leave_pressed"]
+[connection signal="pressed" from="Panel/BtnBack" to="." method="_on_btn_back_pressed"]
+[connection signal="value_changed" from="Panel/WoodMenu/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="pressed" from="Panel/WoodMenu/BtnConfirmWood" to="." method="_on_btn_confirm_wood_pressed"]

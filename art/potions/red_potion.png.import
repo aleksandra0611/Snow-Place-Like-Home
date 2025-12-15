@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5qpo27ie5bes"
-path="res://.godot/imported/Bear.png-0053aa10ef00c3df8f57586aeb310bfe.ctex"
+uid="uid://bk2dbvwcwuyy6"
+path="res://.godot/imported/red_potion.png-0d6f48cb8f639c97ea68cd6fa184dccc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/bear/Bear.png"
-dest_files=["res://.godot/imported/Bear.png-0053aa10ef00c3df8f57586aeb310bfe.ctex"]
+source_file="res://art/potions/red_potion.png"
+dest_files=["res://.godot/imported/red_potion.png-0d6f48cb8f639c97ea68cd6fa184dccc.ctex"]
 
 [params]
 
