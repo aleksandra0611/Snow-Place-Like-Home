@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://d4m5ui12ov58e"]
 
-[ext_resource type="Script" path="res://scripts/campfire.gd" id="1_0je48"]
+[ext_resource type="Script" uid="uid://tv5vorlevhhs" path="res://scripts/campfire.gd" id="1_0je48"]
 [ext_resource type="Texture2D" uid="uid://cq2gi3yvidkbp" path="res://art/fire/campfire-Sheet.png" id="1_t5nnx"]
 [ext_resource type="PackedScene" uid="uid://b4kei8a2fpgyj" path="res://scenes/fire_out.tscn" id="2_1t4us"]
 [ext_resource type="AudioStream" uid="uid://lidktv1qic8p" path="res://sounds/whoosh-flame.mp3" id="4_p7vcq"]

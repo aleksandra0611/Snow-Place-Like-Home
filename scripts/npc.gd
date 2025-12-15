@@ -3,9 +3,23 @@ extends StaticBody2D
 # --- DIALOGUE CONFIG ---
 # You can type your sentences here!
 var dialogue_lines = [
-	"Greetings, traveler.",
-	"The woods are dangerous at night.",
-	"Beware the Alpha Wolf..."
+	"Greetings, traveler...",
+	"It has been ages since anyone answered this road.",
+	"You may not realize it yet, but you are among the last souls left in this kingdom.",
+	"...",
+	"This fire beside me burned for millenia",
+	"It held back the endless cold when cities still stood and people filled these streets.",
+	"Now… its flame is fading.",
+	"The people abandoned this land long ago.",
+	"Only the fire kept this place from freezing into silence.",
+	"I have little strength left, but one hope remains.",
+	"Will you gather wood from the forest and help the fire burn a while longer?",
+	"It is all that stands between this land and eternal frost.",
+	"The woods are dangerous.",
+	"Vicious beasts roam there, and they grow far more aggressive once night falls.",
+	"If your strength begins to fail, seek out the wizard’s shop.",
+	"He may yet offer aid to those still brave enough to walk this world.",
+	"Tread carefully, traveler, and may the flame guide you.”"
 ]
 
 var current_line_index = 0

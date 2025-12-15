@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcb2prj465wlq"]
+[gd_scene load_steps=6 format=3 uid="uid://bcb2prj465wlq"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_651h0"]
+[ext_resource type="Script" uid="uid://ddi4e3hvwr78c" path="res://scripts/main_menu.gd" id="1_651h0"]
 [ext_resource type="Texture2D" uid="uid://bdyooaqg70e0k" path="res://art/Screenshot 2025-12-15 204951.png" id="2_n1uoq"]
+[ext_resource type="AudioStream" uid="uid://xxwt5lcmuud" path="res://sounds/thevillage.mp3" id="3_bqqt6"]
 
 [sub_resource type="SystemFont" id="SystemFont_5dijl"]
 
@@ -70,3 +71,7 @@ text = "PLAY"
 [node name="BtnQuit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bqqt6")
+autoplay = true

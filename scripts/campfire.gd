@@ -2,7 +2,7 @@ extends StaticBody2D
 
 # CONFIGURATION
 @export var time_added_per_log = 30.0 
-var current_fuel_time = 60.0 
+var current_fuel_time = 600.0 
 var is_burning = true
 var player_in_range = false
 
