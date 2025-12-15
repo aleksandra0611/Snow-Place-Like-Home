@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=4 uid="uid://dlpw7m12sye26"]
+[gd_scene load_steps=27 format=4 uid="uid://dlpw7m12sye26"]
 
 [ext_resource type="PackedScene" uid="uid://cr57a1idl5tt" path="res://scenes/main_character.tscn" id="1_5y5qu"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_m4pfa"]
 [ext_resource type="Texture2D" uid="uid://dmvqqshup2nu4" path="res://art/environment/snow2.png" id="2_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://hk05ngoaq18" path="res://scenes/green_tree.tscn" id="2_15b68"]
 [ext_resource type="Texture2D" uid="uid://ba8uwixpxx8w5" path="res://art/environment/WINTER VILLAGE ASSET.png" id="2_71j4m"]
@@ -3510,8 +3511,48 @@ sources/2 = SubResource("TileSetAtlasSource_k06ga")
 sources/0 = SubResource("TileSetAtlasSource_i7141")
 sources/3 = SubResource("TileSetAtlasSource_4mrxx")
 
+[sub_resource type="Animation" id="Animation_wep26"]
+resource_name = "cycle"
+length = 300.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DayNightCycle:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 170, 180, 290, 300),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.293546, 0.294499, 0.550445, 1), Color(0.294118, 0.294118, 0.54902, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l8i51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DayNightCycle:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uie3d"]
+_data = {
+"RESET": SubResource("Animation_l8i51"),
+"cycle": SubResource("Animation_wep26")
+}
+
 [node name="test_world" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_m4pfa")
 
 [node name="main_character" parent="." instance=ExtResource("1_5y5qu")]
 
@@ -3575,3 +3616,11 @@ position = Vector2(722, -213)
 
 [node name="snake" parent="." instance=ExtResource("17_irjq5")]
 position = Vector2(-305, -113)
+
+[node name="DayNightCycle" type="CanvasModulate" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uie3d")
+}
+autoplay = "cycle"

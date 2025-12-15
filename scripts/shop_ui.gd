@@ -14,7 +14,7 @@ var shop_items = [
 @onready var main_menu = $Panel/MainMenu
 @onready var buy_menu = $Panel/BuyMenu
 @onready var wood_menu = $Panel/WoodMenu 
-@onready var wizard_text = $Panel/Label
+@onready var wizard_text = $Panel/MainMenu/Label
 @onready var btn_back = $Panel/BtnBack
 
 # WOOD NODES

@@ -1,7 +1,7 @@
 [gd_scene load_steps=51 format=3 uid="uid://0qqiosaxalv3"]
 
 [ext_resource type="Texture2D" uid="uid://bqkk0nw0w40an" path="res://art/bear/Bear_Attack.png" id="1_aquv5"]
-[ext_resource type="Script" uid="uid://bpw1rqema1tmh" path="res://scripts/bear.gd" id="1_dbn4x"]
+[ext_resource type="Script" path="res://scripts/bear.gd" id="1_dbn4x"]
 [ext_resource type="Texture2D" uid="uid://5qpo27ie5bes" path="res://art/bear/Bear.png" id="2_v0uag"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a5djg"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://brgsblmde6x0b"]
 
 [ext_resource type="Texture2D" uid="uid://bv0bfjedgyum7" path="res://art/wizard/Idle.png" id="1_sfpap"]
-[ext_resource type="Script" uid="uid://cbghu6psc02v6" path="res://scripts/wizard.gd" id="1_tj1jt"]
+[ext_resource type="Script" path="res://scripts/wizard.gd" id="1_tj1jt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xi6gy"]
 atlas = ExtResource("1_sfpap")
@@ -71,7 +71,7 @@ animations = [{
 size = Vector2(21, 36)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwpao"]
-radius = 53.037724
+radius = 53.0377
 
 [node name="wizard" type="CharacterBody2D"]
 collision_mask = 3

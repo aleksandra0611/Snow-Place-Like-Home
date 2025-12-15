@@ -1,17 +1,21 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6kt7eldknfs6"]
 
 [ext_resource type="Texture2D" uid="uid://uyjx3wu6eaiq" path="res://art/environment/shop.png" id="1_8a7ce"]
-[ext_resource type="Script" uid="uid://dpfqyqrpelre0" path="res://scripts/wizard_shop.gd" id="1_cfyyf"]
+[ext_resource type="Script" path="res://scripts/wizard_shop.gd" id="1_cfyyf"]
 [ext_resource type="PackedScene" uid="uid://brgsblmde6x0b" path="res://scenes/wizard.tscn" id="2_tuwjf"]
 [ext_resource type="PackedScene" uid="uid://cr57a1idl5tt" path="res://scenes/main_character.tscn" id="3_l3wh0"]
 
 [sub_resource type="TileSet" id="TileSet_j757y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iprtr"]
-radius = 40.012497
+radius = 40.0125
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfyyf"]
 bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="wizard_shop" type="Node2D"]
 script = ExtResource("1_cfyyf")
@@ -43,6 +47,7 @@ position = Vector2(286, 355)
 shape = SubResource("CircleShape2D_iprtr")
 
 [node name="ExitUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="ExitUI"]
 anchors_preset = 8
@@ -59,19 +64,23 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cfyyf")
 
 [node name="Label" type="Label" parent="ExitUI/Panel"]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 2.0
-offset_right = 186.0
-offset_bottom = 28.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -73.0
+offset_top = 10.0
+offset_right = 74.0
+offset_bottom = 36.0
+grow_horizontal = 2
 text = "Exit wizard's shop?"
 
 [node name="BtnYes" type="Button" parent="ExitUI/Panel"]
 layout_mode = 0
-offset_left = 41.0
-offset_top = 46.0
-offset_right = 77.0
-offset_bottom = 77.0
+offset_left = 51.5
+offset_top = 48.0
+offset_right = 87.5
+offset_bottom = 79.0
 text = "YES"
 
 [node name="BtnNo" type="Button" parent="ExitUI/Panel"]

@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 # --- STATS ---
-var speed = 65
+@export var normal_speed = 65.0
+@export var night_speed = 85.0
+var current_speed = normal_speed
 var dead = false
 var hp = 3 
 # -------------
@@ -22,8 +24,14 @@ func _ready():
 	# Initialize bar value
 	health_bar.max_value = hp
 	health_bar.value = hp
-	# Optional: Hide the bar if health is full, show it only when hit?
-	# For now, we leave it visible.
+	
+	if Global.is_night:
+		current_speed = night_speed
+	else:
+		current_speed = normal_speed
+	
+	Global.night_started.connect(_on_night_started)
+	Global.day_started.connect(_on_day_started)
 
 func _physics_process(_delta):
 	if dead:
@@ -36,7 +44,7 @@ func _physics_process(_delta):
 	# CHASE LOGIC
 	if player_in_area and player:
 		var direction = (player.position - position).normalized()
-		velocity = direction * speed
+		velocity = direction * current_speed
 		move_and_slide()
 		
 		# Animation Handling
@@ -133,3 +141,9 @@ func _on_attack_area_body_entered(body):
 func _on_attack_area_body_exited(body):
 	if body is Player:
 		attack_range = false
+
+func _on_night_started():
+	current_speed = night_speed
+
+func _on_day_started():
+	current_speed = normal_speed

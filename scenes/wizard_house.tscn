@@ -1,13 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://dv5uboyorjmvd"]
 
 [ext_resource type="Texture2D" uid="uid://fn0olb0gn7px" path="res://art/environment/big_house.png" id="1_md8os"]
-[ext_resource type="Script" uid="uid://2oljoc45tqej" path="res://scripts/wizard_house.gd" id="1_rwyn5"]
+[ext_resource type="Script" path="res://scripts/wizard_house.gd" id="1_rwyn5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md8os"]
-radius = 58.00862
+radius = 58.0086
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wj4ca"]
 bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="wizard_house" type="StaticBody2D"]
 y_sort_enabled = true
